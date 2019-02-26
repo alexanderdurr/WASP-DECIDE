@@ -17,7 +17,7 @@ boolean LIC_10();
 boolean LIC_11();
 boolean LIC_12();
 boolean LIC_13();
-boolean LIC_15();
+boolean LIC_14();
 
 /*
 Helper function to determine if 3 points have an angle not within pi +- epsilon
