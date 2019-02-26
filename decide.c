@@ -1,1 +1,6 @@
-// to-do
+#include "decide.h"
+
+void DECIDE(void)
+{
+    
+}
