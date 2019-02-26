@@ -11,7 +11,7 @@
 
         // run decide which changes the global variables
         // LAUNCH, CMV, PUM, FUV
-        decide();
+        DECIDE();
 
         printf("as expected")
         return 0;
