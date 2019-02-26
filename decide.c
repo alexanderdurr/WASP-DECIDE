@@ -153,3 +153,78 @@ boolean LIC_8()
 	}
 	return 0;
 }
+
+/*
+Helper function to determine if a set of 3 points is outside of a circle of radius Radius
+*/
+boolean circle(double X1,double X2,double X3,double Y1,double Y2,double Y3,double Radius)
+{
+ 	double angle12, angle23, angle13;
+	double side12 = sqrt(pow(X1 - X2,2)+pow(Y1 - Y2,2));
+	double side23 = sqrt(pow(X2 - X3,2)+pow(Y2 - Y3,2));
+	double side13 = sqrt(pow(X1 - X3,2)+pow(Y1 - Y3,2));
+	if(DOUBLECOMPARE(side12, Radius*2) == GT)
+	{
+		return 1;
+	}
+	if(DOUBLECOMPARE(side23, Radius*2) == GT)
+	{
+		return 1;
+	}
+	if(DOUBLECOMPARE(side13, Radius*2) == GT)
+	{
+		return 1;
+	}
+	if((DOUBLECOMPARE(side13, 0) == EQ)||(DOUBLECOMPARE(side12, 0) == EQ)||(DOUBLECOMPARE(side23, 0) == EQ))
+	{
+		return 0;
+	}
+	double temp = ((pow(side23,2) + pow(side13,2) - pow(side12,2)) / (2*side23*side13));
+	if(DOUBLECOMPARE(temp, 1.0) == EQ)
+	{
+		angle12 = acos(1.0);
+	}
+	else if(DOUBLECOMPARE(temp, -1.0) == EQ)
+	{
+		angle12 = acos(-1.0);
+	}
+	else
+	{
+		angle12 = acos(temp);
+	}
+	temp = ((pow(side12,2) + pow(side13,2) - pow(side23,2)) / (2*side12*side13));
+	if(DOUBLECOMPARE(temp, 1.0) == EQ)
+	{
+		angle23 = acos(1.0);
+	}
+	else if(DOUBLECOMPARE(temp, -1.0) == EQ)
+	{
+		angle23 = acos(-1.0);
+	}
+	else
+	{
+		angle23 = acos(temp);
+	}
+	angle13 = 3.1415926535 - (angle12+angle23); 
+	if((DOUBLECOMPARE(angle13, 3.1415926535/2) == GT) ||(DOUBLECOMPARE(angle13, 3.1415926535/2) == EQ))
+	{
+		return 0;
+	}
+	else if((DOUBLECOMPARE(angle23, 3.1415926535/2) == GT) ||(DOUBLECOMPARE(angle23, 3.1415926535/2) == EQ))
+	{
+		return 0;
+	}
+	else if((DOUBLECOMPARE(angle12, 3.1415926535/2) == GT) ||(DOUBLECOMPARE(angle12, 3.1415926535/2) == EQ))
+	{
+		return 0;
+	}
+	else
+	{
+		circumRadius = (side12*side23*side13)/sqrt((side12+side23+side13)*(side13+side23-side12)*(side12+side13-side23)*(side12+side23-side13));
+		if(DOUBLECOMPARE(0, Radius) == GT)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
