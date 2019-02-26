@@ -495,3 +495,32 @@ boolean LIC_2()
 	}
 	return 0;
 }
+
+/*
+There exists at least one set of three data points separated by exactly C PTS and D PTS
+consecutive intervening points, respectively, that form an angle such that:
+angle < (PI−EPSILON)
+or
+angle > (PI+EPSILON)
+The second point of the set of three points is always the vertex of the angle. If either the first
+point or the last point (or both) coincide with the vertex, the angle is undefined and the LIC
+is not satisfied by those three points. When NUMPOINTS < 5, the condition is not met.
+1 ≤ C PTS, 1 ≤ D PTS
+C PTS+D PTS ≤ NUMPOINTS−3
+*/
+boolean LIC_9()
+{
+	if (NUMPOINTS < 5)
+	{
+		return 0;
+	}
+	int i;
+	for (i=0; i < NUMPOINTS-(PARAMETERS.C_PTS + PARAMETERS.D_PTS)-2; i++)
+	{
+		if (Angle( X[i], X[i + PARAMETERS.C_PTS + 1],  X[i + PARAMETERS.C_PTS + PARAMETERS.D_PTS + 2], Y[i], Y[i + PARAMETERS.C_PTS + 1], Y[i + PARAMETERS.C_PTS + PARAMETERS.D_PTS + 2], PARAMETERS.EPSILON) == 1)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
