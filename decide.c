@@ -62,7 +62,7 @@ boolean LIC_4()
         Quadrant2=0;
         Quadrant3=0;
         Quadrant4=0;
-        for(j=0, j<PARAMETERS.Q_PTS; j++)
+        for(j=0; j<PARAMETERS.Q_PTS; j++)
         {
              if(( (DOUBLECOMPARE(X[i+j], 0) == EQ) || (DOUBLECOMPARE(X[i+j], 0) == GT) )&& ( (DOUBLECOMPARE(Y[i+j], 0) == EQ) || (DOUBLECOMPARE(Y[i+j], 0) == GT) ))
 			{
