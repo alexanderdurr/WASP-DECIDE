@@ -1,5 +1,7 @@
 #include "decide.h"
 
+typedef int boolean;
+
 // declare LICs
 boolean LIC_0();
 boolean LIC_1();
