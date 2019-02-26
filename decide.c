@@ -105,3 +105,27 @@ boolean LIC_5()
 	}
 	return 0;
 }
+
+/*
+There exists at least one set of two data points separated by exactly K PTS consecutive intervening points that are a distance greater than the length, LENGTH1, apart. The condition
+is not met when NUMPOINTS < 3.
+1 ≤ K PTS ≤ (NUMPOINTS−2)
+*/
+boolean LIC_7() 
+{
+	if(NUMPOINTS < 3)
+	{
+		return 0;
+	}
+	int i;
+	double distance;
+	for (i=0; i < NUMPOINTS-2; i++) 
+	{
+		distance = sqrt(pow(X[i] - X[i+PARAMETERS.K_PTS+1],2)+pow(Y[i] - Y[i+PARAMETERS.K_PTS+1],2));
+		if (DOUBLECOMPARE(distance, PARAMETERS.LENGTH1) == GT) 
+		{
+			return 1; 
+		}
+	}
+	return 0;
+}
