@@ -385,7 +385,7 @@ boolean LIC_11()
 		return 0;
 	}
 	int i;
-	for (i=0; i < (NUMPOINTS-2); i++)
+	for (i=0; i < (NUMPOINTS-PARAMETERS.G_PTS-1); i++)
 	{
 		if (DOUBLECOMPARE((X[i+PARAMETERS.G_PTS+1]-X[i]), 0) == LT)
 		{
