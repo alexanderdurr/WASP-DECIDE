@@ -426,6 +426,7 @@ boolean LIC_6()
 		return 0;
 	}
 	int i;
+	double side12, side23, side13, ange12, angle23, angle13;
 	for (i=0; i <= NUMPOINTS-PARAMETERS.N_PTS; i++) 
 	{
 		int innerpoint;
