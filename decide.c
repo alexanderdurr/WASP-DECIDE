@@ -575,3 +575,26 @@ boolean LIC_3()
 	}
 	return 0;
 }
+
+/*
+There exists at least one set of three data points separated by exactly E PTS and F PTS consecutive intervening points, respectively, that are the vertices of a triangle with area greater
+than AREA1. The condition is not met when NUMPOINTS < 5.
+1 ≤ E PTS, 1 ≤ F PTS
+E PTS+F PTS ≤ NUMPOINTS−3
+*/
+boolean LIC_10()
+{
+	if (NUMPOINTS < 5)
+	{
+		return 0;
+	}
+	int i;
+	for (i=0; i < (NUMPOINTS-(PARAMETERS.E_PTS + PARAMETERS.F_PTS)-2); i++)
+	{
+		if (Area( X[i], X[i + PARAMETERS.E_PTS + 1], X[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2], Y[i], Y[i + PARAMETERS.E_PTS + 1], Y[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2], PARAMETERS.AREA1) == 1)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
