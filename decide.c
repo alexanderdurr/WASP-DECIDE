@@ -167,6 +167,7 @@ CONNECTORS **LCM;
 boolean **PUM;
 boolean *PUV;
 boolean *FUV;
+boolean LAUNCH;
 
 void DECIDE(void)
 {
@@ -227,6 +228,18 @@ void DECIDE(void)
 			FUV[i] = temp;
 		}
 	}
+
+	temp = 1;
+	for (i=0; i<=14; i++) 
+	{
+		if (FUV[i] == 0) 
+		{
+			temp = 0;
+			break;
+		}
+	}
+
+	LAUNCH = temp;
 }
 
 /*
