@@ -32,6 +32,7 @@ boolean Angle(double X1,double X2,double X3,double Y1,double Y2,double Y3, doubl
 		return 0;
 	}
 	double temp = ((pow(side23,2) + pow(side12,2) - pow(side13,2)) / (2*side23*side12));
+	double angle13;
 	if(DOUBLECOMPARE(temp, 1.0) == EQ)
 	{
 		angle13 = acos(1.0);
