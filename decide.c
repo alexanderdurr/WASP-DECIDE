@@ -88,3 +88,20 @@ boolean LIC_4()
 	}
 	return 0;
 } 
+
+/*
+There exists at least one set of two consecutive data points, (X[i],Y[i]) and (X[j],Y[j]), such
+that X[j] - X[i] < 0. (where i = j-1)
+*/
+boolean LIC_5() 
+{
+	int j;
+	for (j=1; j <= (NUMPOINTS-1); j++) 
+	{
+	    if (DOUBLECOMPARE(X[j] - X[j-1], 0) == LT)
+	    {
+	    	return 1;
+	    }
+	}
+	return 0;
+}
