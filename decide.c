@@ -161,6 +161,7 @@ boolean Area(double X1,double X2,double X3,double Y1,double Y2,double Y3,double 
 } 
 
 boolean *CMV;
+boolean **PMV;
 
 void DECIDE(void)
 {
@@ -180,6 +181,26 @@ void DECIDE(void)
 	CMV[12] = LIC_12();
 	CMV[13] = LIC_13();
 	CMV[14] = LIC_14();
+
+	int i,j;
+	boolean temp = 1;
+	for (i=0; i<=14; i++) 
+	{
+		for (j=i+1; j<=14; j++) 
+		{
+			switch (LCM[i][j])
+			{
+				case NOTUSED:
+					temp= 1;
+				case ORR:
+					temp= CMV[i] || CMV[j];
+				case ANDD:
+					temp= CMV[i] && CMV[j];
+			}
+		PUM[i][j] = temp;
+		PUM[j][i] = PUM[i][j];
+		}
+	}
 }
 
 /*
