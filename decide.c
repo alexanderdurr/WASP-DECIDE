@@ -24,8 +24,11 @@ void DECIDE(void)
     
 }
 
-//There exists at least one set of two consecutive data points that are a distance greater than the length LENGTH1 apart
-//See description pdf page 3
+/*
+There exists at least one set of two consecutive data points that are a distance greater than
+the length, LENGTH1, apart.
+(0 ≤ LENGTH1)
+*/
 boolean LIC_0()
 {
     int i;
