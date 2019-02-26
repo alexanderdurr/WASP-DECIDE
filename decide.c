@@ -325,3 +325,22 @@ boolean LIC_13()
 	}
 	return 0;
 }
+
+/*
+There exists at least one set of three consecutive data points that cannot all be contained
+within or on a circle of radius RADIUS1.
+(0 ≤ RADIUS1)
+*/
+boolean LIC_1()
+{ 
+  	int i;
+	for (i=0; i < (NUMPOINTS-2); i++) 
+	{
+		if(circle( X[i],X[i+1],X[i+2],Y[i],Y[i+1],Y[i+2],PARAMETERS.RADIUS1) == 1)
+		{
+			return 1;
+		}
+		
+	}
+	return 0;
+}
