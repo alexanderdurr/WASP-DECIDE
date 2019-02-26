@@ -129,3 +129,27 @@ boolean LIC_7()
 	}
 	return 0;
 }
+
+/*
+There exists at least one set of three data points separated by exactly A PTS and B PTS
+consecutive intervening points, respectively, that cannot be contained within or on a circle of
+radius RADIUS1. The condition is not met when NUMPOINTS < 5.
+1 ≤ A PTS, 1 ≤ B PTS
+A PTS+B PTS ≤ (NUMPOINTS−3)
+*/
+boolean LIC_8() 
+{
+	if(NUMPOINTS < 5)
+	{
+		return 0;
+	}
+  	int i;
+	for (i=0; i < NUMPOINTS-2- PARAMETERS.A_PTS-PARAMETERS.B_PTS; i++) 
+	{
+		if(circle(X[i],X[i+PARAMETERS.A_PTS+1],X[i+PARAMETERS.A_PTS+PARAMETERS.B_PTS+2],Y[i],Y[i+PARAMETERS.A_PTS+1],Y[i+PARAMETERS.A_PTS+PARAMETERS.B_PTS+2],PARAMETERS.RADIUS1) == 1)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
