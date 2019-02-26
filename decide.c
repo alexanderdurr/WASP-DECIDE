@@ -440,3 +440,35 @@ boolean LIC_6()
 	}
 	return 0;
 }
+
+/*
+Helper function to determine if 3 points have an angle not within pi +- epsilon
+*/
+boolean Angle(double X1,double X2,double X3,double Y1,double Y2,double Y3, double Epsilon)
+{
+	side12 = sqrt(pow(X1 - X2,2)+pow(Y1 - Y2,2));
+	side23 = sqrt(pow(X2 - X3,2)+pow(Y2 - Y3,2));
+	side13 = sqrt(pow(X1 - X3,2)+pow(Y1 - Y3,2));
+	if((DOUBLECOMPARE(side12, 0) == EQ)||(DOUBLECOMPARE(side23, 0) == EQ))
+	{
+		return 0;
+	}
+	double temp = ((pow(side23,2) + pow(side12,2) - pow(side13,2)) / (2*side23*side12));
+	if(DOUBLECOMPARE(temp, 1.0) == EQ)
+	{
+		angle13 = acos(1.0);
+	}
+	else if(DOUBLECOMPARE(temp, -1.0) == EQ)
+	{
+		angle13 = acos(-1.0);
+	}
+	else
+	{
+		angle13 = acos(temp);
+	}		
+	if((DOUBLECOMPARE(angle13, (3.1415926535 + Epsilon)) == GT) ||(DOUBLECOMPARE(angle13, (3.1415926535 - Epsilon)) == LT))
+	{
+		return 1;
+	}
+	return 0;
+}
