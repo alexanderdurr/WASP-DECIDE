@@ -337,7 +337,7 @@ boolean LIC_7()
 	}
 	int i;
 	double distance;
-	for (i=0; i < NUMPOINTS-2; i++) 
+	for (i=0; i < NUMPOINTS-1-PARAMETERS.K_PTS; i++) 
 	{
 		distance = sqrt(pow(X[i] - X[i+PARAMETERS.K_PTS+1],2)+pow(Y[i] - Y[i+PARAMETERS.K_PTS+1],2));
 		if (DOUBLECOMPARE(distance, PARAMETERS.LENGTH1) == GT) 
