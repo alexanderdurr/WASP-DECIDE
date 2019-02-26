@@ -54,7 +54,7 @@ is in quadrant I, the point (-l,0) is in quadrant II, the point (0,-l) is in qua
 */
 boolean LIC_4()
 {
-    int i;
+    int i,j;
 	int Quadrant1, Quadrant2, Quadrant3, Quadrant4;
     for(i=0; i<=NUMPOINTS-PARAMETERS.Q_PTS; i++)
     {
