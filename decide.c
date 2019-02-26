@@ -118,8 +118,8 @@ boolean circle(double X1,double X2,double X3,double Y1,double Y2,double Y3,doubl
 	}
 	else
 	{
-		circumRadius = (side12*side23*side13)/sqrt((side12+side23+side13)*(side13+side23-side12)*(side12+side13-side23)*(side12+side23-side13));
-		if(DOUBLECOMPARE(0, Radius) == GT)
+		temp = (side12*side23*side13)/sqrt((side12+side23+side13)*(side13+side23-side12)*(side12+side13-side23)*(side12+side23-side13));
+		if(DOUBLECOMPARE(temp, Radius) == GT)
 		{
 			return 1;
 		}
