@@ -165,6 +165,8 @@ boolean **PMV;
 typedef enum { NOTUSED =777, ORR, ANDD} CONNECTORS;
 CONNECTORS **LCM;
 boolean **PUM;
+boolean *PUV;
+boolean *FUV;
 
 void DECIDE(void)
 {
@@ -200,8 +202,29 @@ void DECIDE(void)
 				case ANDD:
 					temp= CMV[i] && CMV[j];
 			}
-		PUM[i][j] = temp;
-		PUM[j][i] = PUM[i][j];
+			PUM[i][j] = temp;
+			PUM[j][i] = PUM[i][j];
+		}
+	}
+
+	for (i=0; i<=14; i++) 
+	{
+		if (PUV[i] == 0) 
+		{
+			FUV[i] = 1;
+		} 
+		else 
+		{
+			temp = 1; 
+			for (j=0; j<=14; j++) 
+			{
+				if (PUM[i][j] == 0) 
+				{
+					temp = 0;
+					break;
+				}
+			}
+			FUV[i] = temp;
 		}
 	}
 }
