@@ -557,3 +557,21 @@ boolean Area(double X1,double X2,double X3,double Y1,double Y2,double Y3,double 
 	}
 	return 0;
 } 
+
+/*
+There exists at least one set of three consecutive data points that are the vertices of a triangle
+with area greater than AREA1.
+(0 ≤ AREA1)
+*/
+boolean LIC_3() 
+{
+	int i;
+	for (i=0; i < (NUMPOINTS-2); i++) 
+	{
+		if(Area(X[i],X[i+1],X[i+2],Y[i],Y[i+1],Y[i+2],PARAMETERS.AREA1) == 1)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
