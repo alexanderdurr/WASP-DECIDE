@@ -32,9 +32,9 @@ typedef struct {
 
 // declare global variables
 PARAMETERS_T PARAMETERS;
-double *X
-double *Y
-int NUMPOINTS
+double *X;
+double *Y;
+int NUMPOINTS;
 
 // compares floating point numbers -- see Nonfunctional Requirements
 static inline
