@@ -288,3 +288,40 @@ boolean LIC_12()
 	}
 	return 0;	
 }
+
+/*
+There exists at least one set of three data points, separated by exactly A PTS and B PTS
+consecutive intervening points, respectively, that cannot be contained within or on a circle of
+radius RADIUS1. In addition, there exists at least one set of three data points (which can be
+the same or different from the three data points just mentioned) separated by exactly A PTS
+and B PTS consecutive intervening points, respectively, that can be contained in or on a
+circle of radius RADIUS2. Both parts must be true for the LIC to be true. The condition is
+not met when NUMPOINTS < 5.
+0 ≤ RADIUS2
+*/
+boolean LIC_13() 
+{
+	if(NUMPOINTS < 5)
+	{
+		return 0;
+	}
+	int i;
+	int marker1 = 0;
+	int marker2 = 0;
+	for(i = 0; i < (NUMPOINTS - (PARAMETERS.A_PTS + PARAMETERS.B_PTS) - 2); i++)
+	{	
+		if ((marker1 != 1) && (circle(X[i],X[i + PARAMETERS.A_PTS + 1],X[i + PARAMETERS.A_PTS + PARAMETERS.B_PTS + 2],Y[i],Y[i + PARAMETERS.A_PTS + 1],Y[i + PARAMETERS.B_PTS + PARAMETERS.A_PTS + 2],PARAMETERS.RADIUS1) == 1))
+		{
+			marker1 = 1;	
+		}
+		if ((marker2 != 1) && (circle(X[i],X[i + PARAMETERS.A_PTS + 1],X[i + PARAMETERS.A_PTS + PARAMETERS.B_PTS + 2],Y[i],Y[i + PARAMETERS.A_PTS + 1],Y[i + PARAMETERS.B_PTS + PARAMETERS.A_PTS + 2],PARAMETERS.RADIUS2) == 0))
+		{
+			marker2 = 1;
+		}
+		if((marker1 == 1) && (marker2 == 1))
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
