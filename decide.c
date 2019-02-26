@@ -598,3 +598,38 @@ boolean LIC_10()
 	}
 	return 0;
 }
+
+/*
+There exists at least one set of three data points, separated by exactly E PTS and F PTS consecutive intervening points, respectively, that are the vertices of a triangle with area greater
+than AREA1. In addition, there exist three data points (which can be the same or different
+from the three data points just mentioned) separated by exactly E PTS and F PTS consecutive intervening points, respectively, that are the vertices of a triangle with area less than
+AREA2. Both parts must be true for the LIC to be true. The condition is not met when
+NUMPOINTS < 5.
+0 ≤ AREA2
+*/
+boolean LIC_14() 
+{
+	boolean marker1 = 0;
+	boolean marker2 = 0;
+	if(NUMPOINTS < 5)
+	{
+		return 0;
+	}
+	int i;
+	for(i=0; i < (NUMPOINTS - (PARAMETERS.E_PTS + PARAMETERS.F_PTS) - 2); i++)
+	{	
+		if ((marker1 != 1) && (Area(X[i],X[i + PARAMETERS.E_PTS + 1],X[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2],Y[i],Y[i + PARAMETERS.E_PTS + 1],Y[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2],PARAMETERS.AREA1) == 1))
+		{
+			marker1 = 1;	
+		}
+		if ((marker2 != 1) && (Area(X[i],X[i + PARAMETERS.E_PTS + 1],X[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2],Y[i],Y[i + PARAMETERS.E_PTS + 1],Y[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2],PARAMETERS.AREA2) == 0))
+		{
+			marker2 = 1;
+		}
+		if((marker1 == 1) && (marker2 == 1))
+		{
+			return 1;
+		}
+	}
+	return 0;				
+}
