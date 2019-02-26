@@ -162,6 +162,7 @@ boolean Area(double X1,double X2,double X3,double Y1,double Y2,double Y3,double 
 
 boolean *CMV;
 boolean **PMV;
+typedef enum { NOTUSED =777, ORR, ANDD} CONNECTORS;
 
 void DECIDE(void)
 {
