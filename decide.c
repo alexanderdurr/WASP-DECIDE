@@ -23,3 +23,20 @@ void DECIDE(void)
 {
     
 }
+
+//There exists at least one set of two consecutive data points that are a distance greater than the length LENGTH1 apart
+//See description pdf page 3
+boolean LIC_0()
+{
+    int i;
+    double distance;
+    for(i=0; i<(NUMPOINTS-1); i++)
+    {
+        distance=sqrt(pow(X[i]-X[i+1],2)+pow(Y[i]-Y[i+1],2));
+        if (DOUBLECOMPARE(distance, PARAMETERS.LENGTH1)==GT)
+        {
+            return 1; // distance between two points is greater than LENGTH1 (which means the object is fast, indicating a rocket)
+        }
+    }
+    return 0; // distance between two points smaller than LENGTH1
+}
