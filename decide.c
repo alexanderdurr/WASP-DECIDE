@@ -306,8 +306,8 @@ boolean LIC_13()
 		return 0;
 	}
 	int i;
-	int marker1 = 0;
-	int marker2 = 0;
+	boolean marker1 = 0;
+	boolean marker2 = 0;
 	for(i = 0; i < (NUMPOINTS - (PARAMETERS.A_PTS + PARAMETERS.B_PTS) - 2); i++)
 	{	
 		if ((marker1 != 1) && (circle(X[i],X[i + PARAMETERS.A_PTS + 1],X[i + PARAMETERS.A_PTS + PARAMETERS.B_PTS + 2],Y[i],Y[i + PARAMETERS.A_PTS + 1],Y[i + PARAMETERS.B_PTS + PARAMETERS.A_PTS + 2],PARAMETERS.RADIUS1) == 1))
@@ -446,9 +446,9 @@ Helper function to determine if 3 points have an angle not within pi +- epsilon
 */
 boolean Angle(double X1,double X2,double X3,double Y1,double Y2,double Y3, double Epsilon)
 {
-	side12 = sqrt(pow(X1 - X2,2)+pow(Y1 - Y2,2));
-	side23 = sqrt(pow(X2 - X3,2)+pow(Y2 - Y3,2));
-	side13 = sqrt(pow(X1 - X3,2)+pow(Y1 - Y3,2));
+	double side12 = sqrt(pow(X1 - X2,2)+pow(Y1 - Y2,2));
+	double side23 = sqrt(pow(X2 - X3,2)+pow(Y2 - Y3,2));
+	double side13 = sqrt(pow(X1 - X3,2)+pow(Y1 - Y3,2));
 	if((DOUBLECOMPARE(side12, 0) == EQ)||(DOUBLECOMPARE(side23, 0) == EQ))
 	{
 		return 0;
