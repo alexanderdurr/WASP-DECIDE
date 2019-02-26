@@ -472,3 +472,26 @@ boolean Angle(double X1,double X2,double X3,double Y1,double Y2,double Y3, doubl
 	}
 	return 0;
 }
+
+/*
+There exists at least one set of three consecutive data points which form an angle such that:
+angle < (PI−EPSILON)
+or
+angle > (PI+EPSILON)
+The second of the three consecutive points is always the vertex of the angle. If either the first
+point or the last point (or both) coincides with the vertex, the angle is undefined and the LIC
+is not satisfied by those three points.
+(0 ≤ EPSILON < PI)
+*/
+boolean LIC_2() 
+{
+	int i;
+	for (i=0; i < (NUMPOINTS-2); i++) 
+	{
+		if(Angle(X[i], X[i+1], X[i+2], Y[i], Y[i+1], Y[i+2], PARAMETERS.EPSILON) == 1)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
