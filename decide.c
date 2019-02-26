@@ -251,3 +251,40 @@ boolean LIC_11()
 	}
 	return 0;
 }
+
+/*
+There exists at least one set of two data points, separated by exactly K PTS consecutive
+intervening points, which are a distance greater than the length, LENGTH1, apart. In addition, there exists at least one set of two data points (which can be the same or different from
+the two data points just mentioned), separated by exactly K PTS consecutive intervening
+points, that are a distance less than the length, LENGTH2, apart. Both parts must be true
+for the LIC to be true. The condition is not met when NUMPOINTS < 3.
+0 ≤ LENGTH2
+*/
+boolean LIC_12() 
+{
+	double distance;
+	boolean marker1 = 0;
+	boolean marker2 = 0;
+	if(NUMPOINTS < 3)
+	{
+		return 0;
+	}
+	int i;
+	for(i=0; i < (NUMPOINTS - PARAMETERS.K_PTS - 1); i++)
+	{	
+		distance = sqrt(pow(X[i+PARAMETERS.K_PTS + 1] - X[i],2)+pow(Y[i+PARAMETERS.K_PTS + 1] - Y[i],2));
+		if(DOUBLECOMPARE(distance, PARAMETERS.LENGTH1) == GT)
+		{
+			marker1 = 1;
+		}
+		if(DOUBLECOMPARE(distance, PARAMETERS.LENGTH2) == LT)
+		{
+			marker2 = 1;
+		}
+		if((marker1 == 1) && (marker2 == 1))
+		{
+			return 1;
+		}
+	}
+	return 0;	
+}
