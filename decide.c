@@ -22,6 +22,7 @@ boolean LIC_14();
 boolean Circle(double X1, double X2, double X3, double Y1, double Y2, double Y3, double Radius);
 boolean Area(double X1, double X2, double X3, double Y1, double Y2, double Y3, double Radius);
 boolean Angle(double X1, double X2, double X3, double Y1, double Y2, double Y3, double Epsilon);
+double euclideanDistance(double deltaX, double deltaY);
 
 boolean *CMV;
 boolean **PMV;
@@ -114,9 +115,6 @@ There exists at least one set of two consecutive data points that are a distance
 the length, LENGTH1, apart.
 (0 ≤ LENGTH1)
 */
-double euclideanDistance(double deltaX, double deltaY){
-	return sqrt(pow(deltaX,2)+pow(deltaY,2));
-}
 boolean LIC_0()
 {
     int i;
@@ -728,3 +726,10 @@ boolean Area(double X1,double X2,double X3,double Y1,double Y2,double Y3,double 
 	}
 	return 0;
 } 
+
+/*
+Helper function for distance calculateion
+*/
+double euclideanDistance(double deltaX, double deltaY){
+	return sqrt(pow(deltaX,2)+pow(deltaY,2));
+}
