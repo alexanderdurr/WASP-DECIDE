@@ -709,9 +709,9 @@ Helper function to determine if area of triangle is greater than Area
 */
 boolean Area(double X1,double X2,double X3,double Y1,double Y2,double Y3,double Area)
 {
-	double sida12 = sqrt(pow(X1 - X2,2)+pow(Y1 - Y2,2));
-	double sida23 = sqrt(pow(X2 - X3,2)+pow(Y2 - Y3,2));
-	double sida13 = sqrt(pow(X1 - X3,2)+pow(Y1 - Y3,2));
+	double side12 = euclideanDistance(X1 - X2, Y1 - Y2);
+	double side23 =euclideanDistance(X2 - X3, Y2 - Y3);
+	double side13 = euclideanDistance(X1 - X3, Y1 - Y3);
 	double temp = (((sida12+sida23+sida13)/2)*(((sida12+sida23+sida13)/2)-sida12)*(((sida12+sida23+sida13)/2)-sida23)*(((sida12+sida23+sida13)/2)-sida13));
 	if((DOUBLECOMPARE(temp, -0) == EQ))
 	{
