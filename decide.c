@@ -114,6 +114,10 @@ There exists at least one set of two consecutive data points that are a distance
 the length, LENGTH1, apart.
 (0 ≤ LENGTH1)
 */
+double euclideanDistance(double deltaX, double deltaY){
+	double dist = sqrt(pow(deltaX,2)+pow(deltaY,2));
+	return dist;
+}
 boolean LIC_0()
 {
     int i;
@@ -122,7 +126,7 @@ boolean LIC_0()
     {
 		deltaX = POINTS.X[i]-POINTS.X[i+1];
 		deltaY = POINTS.Y[i]-POINTS.Y[i+1];
-        distance=sqrt(pow(deltaX,2)+pow(deltaY,2));
+        distance=euclideanDistance(deltaX, deltaY);
         if (DOUBLECOMPARE(distance, PARAMETERS.LENGTH1)==GT)
         {
             return 1; // distance between two points is greater than LENGTH1 (which means the object is fast, indicating a rocket)
