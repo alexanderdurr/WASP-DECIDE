@@ -120,7 +120,7 @@ boolean LIC_0()
     double distance;
     for(i=0; i<(NUMPOINTS-1); i++)
     {
-        distance=sqrt(pow(X[i]-X[i+1],2)+pow(Y[i]-Y[i+1],2));
+        distance=sqrt(pow(POINTS.X[i]-POINTS.X[i+1],2)+pow(POINTS.Y[i]-POINTS.Y[i+1],2));
         if (DOUBLECOMPARE(distance, PARAMETERS.LENGTH1)==GT)
         {
             return 1; // distance between two points is greater than LENGTH1 (which means the object is fast, indicating a rocket)
@@ -149,15 +149,15 @@ boolean LIC_4()
         Quadrant4=0;
         for(j=0; j<PARAMETERS.Q_PTS; j++)
         {
-             if(( (DOUBLECOMPARE(X[i+j], 0) == EQ) || (DOUBLECOMPARE(X[i+j], 0) == GT) )&& ( (DOUBLECOMPARE(Y[i+j], 0) == EQ) || (DOUBLECOMPARE(Y[i+j], 0) == GT) ))
+             if(( (DOUBLECOMPARE(POINTS.X[i+j], 0) == EQ) || (DOUBLECOMPARE(POINTS.X[i+j], 0) == GT) )&& ( (DOUBLECOMPARE(POINTS.Y[i+j], 0) == EQ) || (DOUBLECOMPARE(POINTS.Y[i+j], 0) == GT) ))
 			{
 				Quadrant1 = 1;
 			}
-			else if(( (DOUBLECOMPARE(X[i+j], 0) == LT) ) && ( (DOUBLECOMPARE(Y[i+j], 0) == EQ) || (DOUBLECOMPARE(Y[i+j], 0) == GT) ))
+			else if(( (DOUBLECOMPARE(POINTS.X[i+j], 0) == LT) ) && ( (DOUBLECOMPARE(POINTS.Y[i+j], 0) == EQ) || (DOUBLECOMPARE(POINTS.Y[i+j], 0) == GT) ))
 			{
 				Quadrant2 = 1;
 			}
-			else if(( (DOUBLECOMPARE(X[i+j], 0) == LT) || (DOUBLECOMPARE(X[i+j], 0) == EQ) )&& ( (DOUBLECOMPARE(Y[i+j], 0) == LT) ))
+			else if(( (DOUBLECOMPARE(POINTS.X[i+j], 0) == LT) || (DOUBLECOMPARE(POINTS.X[i+j], 0) == EQ) )&& ( (DOUBLECOMPARE(POINTS.Y[i+j], 0) == LT) ))
 			{
 				Quadrant3 = 1;
 			}
@@ -183,7 +183,7 @@ boolean LIC_5()
 	int j;
 	for (j=1; j <= (NUMPOINTS-1); j++) 
 	{
-	    if (DOUBLECOMPARE(X[j] - X[j-1], 0) == LT)
+	    if (DOUBLECOMPARE(POINTS.X[j] - POINTS.X[j-1], 0) == LT)
 	    {
 	    	return 1;
 	    }
@@ -206,7 +206,7 @@ boolean LIC_7()
 	double distance;
 	for (i=0; i < NUMPOINTS-1-PARAMETERS.K_PTS; i++) 
 	{
-		distance = sqrt(pow(X[i] - X[i+PARAMETERS.K_PTS+1],2)+pow(Y[i] - Y[i+PARAMETERS.K_PTS+1],2));
+		distance = sqrt(pow(POINTS.X[i] - POINTS.X[i+PARAMETERS.K_PTS+1],2)+pow(POINTS.Y[i] - POINTS.Y[i+PARAMETERS.K_PTS+1],2));
 		if (DOUBLECOMPARE(distance, PARAMETERS.LENGTH1) == GT) 
 		{
 			return 1; 
@@ -231,7 +231,7 @@ boolean LIC_8()
   	int i;
 	for (i=0; i < NUMPOINTS-2- PARAMETERS.A_PTS-PARAMETERS.B_PTS; i++) 
 	{
-		if(circle(X[i],X[i+PARAMETERS.A_PTS+1],X[i+PARAMETERS.A_PTS+PARAMETERS.B_PTS+2],Y[i],Y[i+PARAMETERS.A_PTS+1],Y[i+PARAMETERS.A_PTS+PARAMETERS.B_PTS+2],PARAMETERS.RADIUS1) == 1)
+		if(circle(POINTS.X[i],POINTS.X[i+PARAMETERS.A_PTS+1],POINTS.X[i+PARAMETERS.A_PTS+PARAMETERS.B_PTS+2],POINTS.Y[i],POINTS.Y[i+PARAMETERS.A_PTS+1],POINTS.Y[i+PARAMETERS.A_PTS+PARAMETERS.B_PTS+2],PARAMETERS.RADIUS1) == 1)
 		{
 			return 1;
 		}
@@ -254,7 +254,7 @@ boolean LIC_11()
 	int i;
 	for (i=0; i < (NUMPOINTS-PARAMETERS.G_PTS-1); i++)
 	{
-		if (DOUBLECOMPARE((X[i+PARAMETERS.G_PTS+1]-X[i]), 0) == LT)
+		if (DOUBLECOMPARE((POINTS.X[i+PARAMETERS.G_PTS+1]-POINTS.X[i]), 0) == LT)
 		{
 			return 1;
 		}
@@ -282,7 +282,7 @@ boolean LIC_12()
 	int i;
 	for(i=0; i < (NUMPOINTS - PARAMETERS.K_PTS - 1); i++)
 	{	
-		distance = sqrt(pow(X[i+PARAMETERS.K_PTS + 1] - X[i],2)+pow(Y[i+PARAMETERS.K_PTS + 1] - Y[i],2));
+		distance = sqrt(pow(POINTS.X[i+PARAMETERS.K_PTS + 1] - POINTS.X[i],2)+pow(POINTS.Y[i+PARAMETERS.K_PTS + 1] - POINTS.Y[i],2));
 		if(DOUBLECOMPARE(distance, PARAMETERS.LENGTH1) == GT)
 		{
 			marker1 = 1;
@@ -320,11 +320,11 @@ boolean LIC_13()
 	boolean marker2 = 0;
 	for(i = 0; i < (NUMPOINTS - (PARAMETERS.A_PTS + PARAMETERS.B_PTS) - 2); i++)
 	{	
-		if ((marker1 != 1) && (circle(X[i],X[i + PARAMETERS.A_PTS + 1],X[i + PARAMETERS.A_PTS + PARAMETERS.B_PTS + 2],Y[i],Y[i + PARAMETERS.A_PTS + 1],Y[i + PARAMETERS.B_PTS + PARAMETERS.A_PTS + 2],PARAMETERS.RADIUS1) == 1))
+		if ((marker1 != 1) && (circle(POINTS.X[i],POINTS.X[i + PARAMETERS.A_PTS + 1],POINTS.X[i + PARAMETERS.A_PTS + PARAMETERS.B_PTS + 2],POINTS.Y[i],POINTS.Y[i + PARAMETERS.A_PTS + 1],POINTS.Y[i + PARAMETERS.B_PTS + PARAMETERS.A_PTS + 2],PARAMETERS.RADIUS1) == 1))
 		{
 			marker1 = 1;	
 		}
-		if ((marker2 != 1) && (circle(X[i],X[i + PARAMETERS.A_PTS + 1],X[i + PARAMETERS.A_PTS + PARAMETERS.B_PTS + 2],Y[i],Y[i + PARAMETERS.A_PTS + 1],Y[i + PARAMETERS.B_PTS + PARAMETERS.A_PTS + 2],PARAMETERS.RADIUS2) == 0))
+		if ((marker2 != 1) && (circle(POINTS.X[i],POINTS.X[i + PARAMETERS.A_PTS + 1],POINTS.X[i + PARAMETERS.A_PTS + PARAMETERS.B_PTS + 2],POINTS.Y[i],POINTS.Y[i + PARAMETERS.A_PTS + 1],POINTS.Y[i + PARAMETERS.B_PTS + PARAMETERS.A_PTS + 2],PARAMETERS.RADIUS2) == 0))
 		{
 			marker2 = 1;
 		}
@@ -346,7 +346,7 @@ boolean LIC_1()
   	int i;
 	for (i=0; i < (NUMPOINTS-2); i++) 
 	{
-		if(circle( X[i],X[i+1],X[i+2],Y[i],Y[i+1],Y[i+2],PARAMETERS.RADIUS1) == 1)
+		if(circle( POINTS.X[i],POINTS.X[i+1],POINTS.X[i+2],POINTS.Y[i],POINTS.Y[i+1],POINTS.Y[i+2],PARAMETERS.RADIUS1) == 1)
 		{
 			return 1;
 		}
@@ -376,9 +376,9 @@ boolean LIC_6()
 		int innerpoint;
 		for (innerpoint=0; innerpoint < (PARAMETERS.N_PTS-2); innerpoint++) 
 		{
-	    		side12 = sqrt(pow(X[i] - X[i+PARAMETERS.N_PTS-1],2)+pow(Y[i] - Y[i+PARAMETERS.N_PTS-1],2)); //distance formula
-	    		side23 = sqrt(pow(X[i+PARAMETERS.N_PTS-1] - X[i+innerpoint+1],2)+pow(Y[i+PARAMETERS.N_PTS-1] - Y[i+innerpoint+1],2));
-	    		side13 = sqrt(pow(X[i] - X[i+innerpoint+1],2)+pow(Y[i] - Y[i+innerpoint+1],2));
+	    		side12 = sqrt(pow(POINTS.X[i] - POINTS.X[i+PARAMETERS.N_PTS-1],2)+pow(POINTS.Y[i] - POINTS.Y[i+PARAMETERS.N_PTS-1],2)); //distance formula
+	    		side23 = sqrt(pow(POINTS.X[i+PARAMETERS.N_PTS-1] - POINTS.X[i+innerpoint+1],2)+pow(POINTS.Y[i+PARAMETERS.N_PTS-1] - POINTS.Y[i+innerpoint+1],2));
+	    		side13 = sqrt(pow(POINTS.X[i] - POINTS.X[i+innerpoint+1],2)+pow(POINTS.Y[i] - POINTS.Y[i+innerpoint+1],2));
 			if(DOUBLECOMPARE(side12, 0) == EQ)
 			{
 				if(DOUBLECOMPARE(side23, PARAMETERS.DIST) == GT)
@@ -467,7 +467,7 @@ boolean LIC_2()
 	int i;
 	for (i=0; i < (NUMPOINTS-2); i++) 
 	{
-		if(Angle(X[i], X[i+1], X[i+2], Y[i], Y[i+1], Y[i+2], PARAMETERS.EPSILON) == 1)
+		if(Angle(POINTS.X[i], POINTS.X[i+1], POINTS.X[i+2], POINTS.Y[i], POINTS.Y[i+1], POINTS.Y[i+2], PARAMETERS.EPSILON) == 1)
 		{
 			return 1;
 		}
@@ -496,7 +496,7 @@ boolean LIC_9()
 	int i;
 	for (i=0; i < NUMPOINTS-(PARAMETERS.C_PTS + PARAMETERS.D_PTS)-2; i++)
 	{
-		if (Angle( X[i], X[i + PARAMETERS.C_PTS + 1],  X[i + PARAMETERS.C_PTS + PARAMETERS.D_PTS + 2], Y[i], Y[i + PARAMETERS.C_PTS + 1], Y[i + PARAMETERS.C_PTS + PARAMETERS.D_PTS + 2], PARAMETERS.EPSILON) == 1)
+		if (Angle( POINTS.X[i], POINTS.X[i + PARAMETERS.C_PTS + 1],  POINTS.X[i + PARAMETERS.C_PTS + PARAMETERS.D_PTS + 2], POINTS.Y[i], POINTS.Y[i + PARAMETERS.C_PTS + 1], POINTS.Y[i + PARAMETERS.C_PTS + PARAMETERS.D_PTS + 2], PARAMETERS.EPSILON) == 1)
 		{
 			return 1;
 		}
@@ -516,7 +516,7 @@ boolean LIC_3()
 	int i;
 	for (i=0; i < (NUMPOINTS-2); i++) 
 	{
-		if(Area(X[i],X[i+1],X[i+2],Y[i],Y[i+1],Y[i+2],PARAMETERS.AREA1) == 1)
+		if(Area(POINTS.X[i],POINTS.X[i+1],POINTS.X[i+2],POINTS.Y[i],POINTS.Y[i+1],POINTS.Y[i+2],PARAMETERS.AREA1) == 1)
 		{
 			return 1;
 		}
@@ -539,7 +539,7 @@ boolean LIC_10()
 	int i;
 	for (i=0; i < (NUMPOINTS-(PARAMETERS.E_PTS + PARAMETERS.F_PTS)-2); i++)
 	{
-		if (Area( X[i], X[i + PARAMETERS.E_PTS + 1], X[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2], Y[i], Y[i + PARAMETERS.E_PTS + 1], Y[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2], PARAMETERS.AREA1) == 1)
+		if (Area( POINTS.X[i], POINTS.X[i + PARAMETERS.E_PTS + 1], POINTS.X[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2], POINTS.Y[i], POINTS.Y[i + PARAMETERS.E_PTS + 1], POINTS.Y[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2], PARAMETERS.AREA1) == 1)
 		{
 			return 1;
 		}
@@ -566,11 +566,11 @@ boolean LIC_14()
 	int i;
 	for(i=0; i < (NUMPOINTS - (PARAMETERS.E_PTS + PARAMETERS.F_PTS) - 2); i++)
 	{	
-		if ((marker1 != 1) && (Area(X[i],X[i + PARAMETERS.E_PTS + 1],X[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2],Y[i],Y[i + PARAMETERS.E_PTS + 1],Y[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2],PARAMETERS.AREA1) == 1))
+		if ((marker1 != 1) && (Area(POINTS.X[i],POINTS.X[i + PARAMETERS.E_PTS + 1],POINTS.X[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2],POINTS.Y[i],POINTS.Y[i + PARAMETERS.E_PTS + 1],POINTS.Y[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2],PARAMETERS.AREA1) == 1))
 		{
 			marker1 = 1;	
 		}
-		if ((marker2 != 1) && (Area(X[i],X[i + PARAMETERS.E_PTS + 1],X[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2],Y[i],Y[i + PARAMETERS.E_PTS + 1],Y[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2],PARAMETERS.AREA2) == 0))
+		if ((marker2 != 1) && (Area(POINTS.X[i],POINTS.X[i + PARAMETERS.E_PTS + 1],POINTS.X[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2],POINTS.Y[i],POINTS.Y[i + PARAMETERS.E_PTS + 1],POINTS.Y[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2],PARAMETERS.AREA2) == 0))
 		{
 			marker2 = 1;
 		}
