@@ -699,13 +699,13 @@ boolean Area(double X1,double X2,double X3,double Y1,double Y2,double Y3,double 
 	double side12 = euclideanDistance(X1 - X2, Y1 - Y2);
 	double side23 =euclideanDistance(X2 - X3, Y2 - Y3);
 	double side13 = euclideanDistance(X1 - X3, Y1 - Y3);
-	double temp = (((sida12+sida23+sida13)/2)*(((sida12+sida23+sida13)/2)-sida12)*(((sida12+sida23+sida13)/2)-sida23)*(((sida12+sida23+sida13)/2)-sida13));
+	double temp = (((side12+side23+side13)/2)*(((side12+side23+side13)/2)-side12)*(((side12+side23+side13)/2)-side23)*(((side12+side23+side13)/2)-side13));
 	if((DOUBLECOMPARE(temp, -0) == EQ))
 	{
 		temp = 0;
 	}
 	double area = sqrt(temp);
-	if((DOUBLECOMPARE(((sida12+sida23+sida13)/2), sida23) == EQ)||(DOUBLECOMPARE(((sida12+sida23+sida13)/2), sida12) == EQ)||(DOUBLECOMPARE(((sida12+sida23+sida13)/2), sida13) == EQ))//This is a flat line since have the perimeter is the same size as one side
+	if((DOUBLECOMPARE(((side12+side23+side13)/2), side23) == EQ)||(DOUBLECOMPARE(((side12+side23+side13)/2), side12) == EQ)||(DOUBLECOMPARE(((side12+side23+side13)/2), side13) == EQ))//This is a flat line since have the perimeter is the same size as one side
 	{
 		double area2 = (X1*(Y2-Y3))+(X2*(Y3-Y1))+(X3*(Y1-Y2));
 		area2 = area2*area2;
