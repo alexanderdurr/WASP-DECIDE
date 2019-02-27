@@ -211,6 +211,103 @@ boolean LIC_5()
 }
 
 /*
+There exists at least one set of N PTS consecutive data points such that at least one of the
+points lies a distance greater than DIST from the line joining the first and last of these N PTS
+points. If the first and last points of these N PTS are identical, then the calculated distance
+to compare with DIST will be the distance from the coincident point to all other points of
+the N PTS consecutive points. The condition is not met when NUMPOINTS < 3.
+(3 ≤ N PTS ≤ NUMPOINTS), (0 ≤ DIST)
+*/
+boolean LIC_6() 
+{
+	if(NUMPOINTS < 3)
+	{
+		return 0;
+	}
+	int i;
+	double side12, side23, side13, angle12, angle23, angle13;
+	for (i=0; i <= NUMPOINTS-PARAMETERS.N_PTS; i++) 
+	{
+		int innerpoint;
+		for (innerpoint=0; innerpoint < (PARAMETERS.N_PTS-2); innerpoint++) 
+		{
+	    		side12 = sqrt(pow(POINTS.X[i] - POINTS.X[i+PARAMETERS.N_PTS-1],2)+pow(POINTS.Y[i] - POINTS.Y[i+PARAMETERS.N_PTS-1],2)); //distance formula
+	    		side23 = sqrt(pow(POINTS.X[i+PARAMETERS.N_PTS-1] - POINTS.X[i+innerpoint+1],2)+pow(POINTS.Y[i+PARAMETERS.N_PTS-1] - POINTS.Y[i+innerpoint+1],2));
+	    		side13 = sqrt(pow(POINTS.X[i] - POINTS.X[i+innerpoint+1],2)+pow(POINTS.Y[i] - POINTS.Y[i+innerpoint+1],2));
+			if(DOUBLECOMPARE(side12, 0) == EQ)
+			{
+				if(DOUBLECOMPARE(side23, PARAMETERS.DIST) == GT)
+				{
+					return 1;
+				}
+				else
+				{
+					continue;
+				}
+			}
+			if((DOUBLECOMPARE(side13, 0) == EQ) ||(DOUBLECOMPARE(side23, 0) == EQ))
+			{
+				continue;
+			}
+			double temp = ((pow(side23,2) + pow(side13,2) - pow(side12,2)) / (2*side23*side13));
+			if(DOUBLECOMPARE(temp, 1.0) == EQ)
+			{
+				angle12 = acos(1.0);
+			}
+			else if(DOUBLECOMPARE(temp, -1.0) == EQ)
+			{
+				angle12 = acos(-1.0);
+			}
+			else
+			{
+				angle12 = acos(temp);
+			}
+			temp = ((pow(side12,2) + pow(side13,2) - pow(side23,2)) / (2*side12*side13));
+			if(DOUBLECOMPARE(temp, 1.0) == EQ)
+			{
+				angle23 = acos(1.0);
+			}
+			else if(DOUBLECOMPARE(temp, -1.0) == EQ)
+			{
+				angle23 = acos(-1.0);
+			}
+			else
+			{
+				angle23 = acos(temp);
+			}
+			angle13 = PI - (angle12+angle23);
+			if((DOUBLECOMPARE(angle13, PI/2) == GT) ||(DOUBLECOMPARE(angle13, PI/2) == EQ))
+			{
+				if(DOUBLECOMPARE(sin(PI - angle13)*side23, PARAMETERS.DIST) == GT)
+				{
+					return 1;
+				}
+				else
+				{
+					continue;
+				}
+			}
+			else if((DOUBLECOMPARE(angle23, PI/2) == GT) ||(DOUBLECOMPARE(angle23, PI/2) == EQ))
+			{
+				if(DOUBLECOMPARE(sin(PI - angle23)*side13, PARAMETERS.DIST) == GT)
+				{
+					return 1;
+				}
+				else
+				{
+					continue;
+				}
+			}			
+			if(DOUBLECOMPARE(side13*sin(angle23), PARAMETERS.DIST) == GT)
+			{
+				return 1;
+			}
+		}
+	}
+	return 0;
+}
+
+/*
 There exists at least one set of two data points separated by exactly K PTS consecutive intervening points that are a distance greater than the length, LENGTH1, apart. The condition
 is not met when NUMPOINTS < 3.
 1 ≤ K PTS ≤ (NUMPOINTS−2)
@@ -355,102 +452,7 @@ boolean LIC_13()
 	return 0;
 }
 
-/*
-There exists at least one set of N PTS consecutive data points such that at least one of the
-points lies a distance greater than DIST from the line joining the first and last of these N PTS
-points. If the first and last points of these N PTS are identical, then the calculated distance
-to compare with DIST will be the distance from the coincident point to all other points of
-the N PTS consecutive points. The condition is not met when NUMPOINTS < 3.
-(3 ≤ N PTS ≤ NUMPOINTS), (0 ≤ DIST)
-*/
-boolean LIC_6() 
-{
-	if(NUMPOINTS < 3)
-	{
-		return 0;
-	}
-	int i;
-	double side12, side23, side13, angle12, angle23, angle13;
-	for (i=0; i <= NUMPOINTS-PARAMETERS.N_PTS; i++) 
-	{
-		int innerpoint;
-		for (innerpoint=0; innerpoint < (PARAMETERS.N_PTS-2); innerpoint++) 
-		{
-	    		side12 = sqrt(pow(POINTS.X[i] - POINTS.X[i+PARAMETERS.N_PTS-1],2)+pow(POINTS.Y[i] - POINTS.Y[i+PARAMETERS.N_PTS-1],2)); //distance formula
-	    		side23 = sqrt(pow(POINTS.X[i+PARAMETERS.N_PTS-1] - POINTS.X[i+innerpoint+1],2)+pow(POINTS.Y[i+PARAMETERS.N_PTS-1] - POINTS.Y[i+innerpoint+1],2));
-	    		side13 = sqrt(pow(POINTS.X[i] - POINTS.X[i+innerpoint+1],2)+pow(POINTS.Y[i] - POINTS.Y[i+innerpoint+1],2));
-			if(DOUBLECOMPARE(side12, 0) == EQ)
-			{
-				if(DOUBLECOMPARE(side23, PARAMETERS.DIST) == GT)
-				{
-					return 1;
-				}
-				else
-				{
-					continue;
-				}
-			}
-			if((DOUBLECOMPARE(side13, 0) == EQ) ||(DOUBLECOMPARE(side23, 0) == EQ))
-			{
-				continue;
-			}
-			double temp = ((pow(side23,2) + pow(side13,2) - pow(side12,2)) / (2*side23*side13));
-			if(DOUBLECOMPARE(temp, 1.0) == EQ)
-			{
-				angle12 = acos(1.0);
-			}
-			else if(DOUBLECOMPARE(temp, -1.0) == EQ)
-			{
-				angle12 = acos(-1.0);
-			}
-			else
-			{
-				angle12 = acos(temp);
-			}
-			temp = ((pow(side12,2) + pow(side13,2) - pow(side23,2)) / (2*side12*side13));
-			if(DOUBLECOMPARE(temp, 1.0) == EQ)
-			{
-				angle23 = acos(1.0);
-			}
-			else if(DOUBLECOMPARE(temp, -1.0) == EQ)
-			{
-				angle23 = acos(-1.0);
-			}
-			else
-			{
-				angle23 = acos(temp);
-			}
-			angle13 = PI - (angle12+angle23);
-			if((DOUBLECOMPARE(angle13, PI/2) == GT) ||(DOUBLECOMPARE(angle13, PI/2) == EQ))
-			{
-				if(DOUBLECOMPARE(sin(PI - angle13)*side23, PARAMETERS.DIST) == GT)
-				{
-					return 1;
-				}
-				else
-				{
-					continue;
-				}
-			}
-			else if((DOUBLECOMPARE(angle23, PI/2) == GT) ||(DOUBLECOMPARE(angle23, PI/2) == EQ))
-			{
-				if(DOUBLECOMPARE(sin(PI - angle23)*side13, PARAMETERS.DIST) == GT)
-				{
-					return 1;
-				}
-				else
-				{
-					continue;
-				}
-			}			
-			if(DOUBLECOMPARE(side13*sin(angle23), PARAMETERS.DIST) == GT)
-			{
-				return 1;
-			}
-		}
-	}
-	return 0;
-}
+
 
 /*
 There exists at least one set of three consecutive data points which form an angle such that:
