@@ -277,13 +277,13 @@ boolean LIC_6()
 		{
 			deltaX = POINTS.X[i] - POINTS.X[i+PARAMETERS.N_PTS-1];
 			deltaY = POINTS.Y[i] - POINTS.Y[i+PARAMETERS.N_PTS-1];
-			side12 = sqrt(pow(deltaX,2)+pow(deltaY,2));
+			side12 = euclideanDistance(deltaX, deltaY);
 			deltaX = POINTS.X[i+PARAMETERS.N_PTS-1] - POINTS.X[i+innerpoint+1];
 			deltaY = POINTS.Y[i+PARAMETERS.N_PTS-1] - POINTS.Y[i+innerpoint+1];
-			side23 = sqrt(pow(deltaX,2)+pow(deltaY,2));
+			side23 = euclideanDistance(deltaX, deltaY);
 			deltaX = POINTS.X[i] - POINTS.X[i+innerpoint+1];
 			deltaY = POINTS.Y[i] - POINTS.Y[i+innerpoint+1];
-			side13 = sqrt(pow(deltaX,2)+pow(deltaY,2));
+			side13 = euclideanDistance(deltaX, deltaY);
 			if(DOUBLECOMPARE(side12, 0) == EQ)
 			{
 				if(DOUBLECOMPARE(side23, PARAMETERS.DIST) == GT)
