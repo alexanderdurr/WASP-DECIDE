@@ -21,15 +21,15 @@ The DECIDE system is implemented according to this specification: http://www.mon
 
 Pass:
 * [x] Setup own repository
-* [ ] Maintain a streak of 10+ high-quality commits
+* [x] Maintain a streak of 10+ high-quality commits
 * [x] Write a high quality README
 * [ ] Perform a release
 * [ ] Upload a link to the code repository to Canvas
 
 Checks:
-* [ ] Structured repository, appropriate folders
-* [ ] Every commit is atomic bug fix, or feature with clear commit message (reflecting commit contents)
-* [ ] Insturctions on compiling and executing the code with simple example
+* [x] Structured repository, appropriate folders
+* [x] Every commit is atomic bug fix, or feature with clear commit message (reflecting commit contents)
+* [x] Insturctions on compiling and executing the code with simple example
 
 Pass with distinction:
 * [ ] Commits clearly identified as feature, fix, documentantion, etc.
@@ -38,12 +38,12 @@ Pass with distinction:
 ### Refactoring
 
 Pass:
-* [ ] Each refactoring as a single commit
-* [ ] Reach at least 16 points
+* [x] Each refactoring as a single commit
+* [x] Reach at least 16 points
 (rename method/variable/field, encapsule field, move method/field, extract magic constant, inline method)
 * [ ] At least 2 complex refactorings
 (replace conditional with polymorphism, replace inheritance with delegation, extract class/method, extract interface, pull up method)
-* [ ] Use name scheme of the refactoring cataloques
+* [x] Use name scheme of the refactoring cataloques
 * [ ] Submit list of commit identifiers for the refactoring commits
 
 ### Testing
@@ -94,9 +94,26 @@ The naming of a branch follows
 
 ## Code Description and Execution
 
-### DECIDE()
+### Compiling
 
-- How the Decide system works
-- How to compile the code
-- How to execute the code (on simple example)
+The calculations are described in decide.pdf and you can look into the original document the task is based on by looking at nver-tse.pdf .
 
+You can compile decide.c with
+
+```
+make decide.o
+```
+
+### Example
+
+You can execute the example by compiling everything first
+
+```
+make example1_decide
+```
+
+and then executing
+
+```
+./example1_decide
+```
