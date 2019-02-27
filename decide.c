@@ -379,6 +379,35 @@ boolean LIC_8()
 }
 
 /*
+There exists at least one set of three data points separated by exactly C PTS and D PTS
+consecutive intervening points, respectively, that form an angle such that:
+angle < (PI−EPSILON)
+or
+angle > (PI+EPSILON)
+The second point of the set of three points is always the vertex of the angle. If either the first
+point or the last point (or both) coincide with the vertex, the angle is undefined and the LIC
+is not satisfied by those three points. When NUMPOINTS < 5, the condition is not met.
+1 ≤ C PTS, 1 ≤ D PTS
+C PTS+D PTS ≤ NUMPOINTS−3
+*/
+boolean LIC_9()
+{
+	if (NUMPOINTS < 5)
+	{
+		return 0;
+	}
+	int i;
+	for (i=0; i < NUMPOINTS-(PARAMETERS.C_PTS + PARAMETERS.D_PTS)-2; i++)
+	{
+		if (Angle( POINTS.X[i], POINTS.X[i + PARAMETERS.C_PTS + 1],  POINTS.X[i + PARAMETERS.C_PTS + PARAMETERS.D_PTS + 2], POINTS.Y[i], POINTS.Y[i + PARAMETERS.C_PTS + 1], POINTS.Y[i + PARAMETERS.C_PTS + PARAMETERS.D_PTS + 2], PARAMETERS.EPSILON) == 1)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
+/*
 There exists at least one set of two data points, (X[i],Y[i]) and (X[j],Y[j]), separated by
 exactly G PTS consecutive intervening points, such that X[j] - X[i] < 0. (where i < j ) The
 condition is not met when NUMPOINTS < 3.
@@ -474,37 +503,6 @@ boolean LIC_13()
 	}
 	return 0;
 }
-
-/*
-There exists at least one set of three data points separated by exactly C PTS and D PTS
-consecutive intervening points, respectively, that form an angle such that:
-angle < (PI−EPSILON)
-or
-angle > (PI+EPSILON)
-The second point of the set of three points is always the vertex of the angle. If either the first
-point or the last point (or both) coincide with the vertex, the angle is undefined and the LIC
-is not satisfied by those three points. When NUMPOINTS < 5, the condition is not met.
-1 ≤ C PTS, 1 ≤ D PTS
-C PTS+D PTS ≤ NUMPOINTS−3
-*/
-boolean LIC_9()
-{
-	if (NUMPOINTS < 5)
-	{
-		return 0;
-	}
-	int i;
-	for (i=0; i < NUMPOINTS-(PARAMETERS.C_PTS + PARAMETERS.D_PTS)-2; i++)
-	{
-		if (Angle( POINTS.X[i], POINTS.X[i + PARAMETERS.C_PTS + 1],  POINTS.X[i + PARAMETERS.C_PTS + PARAMETERS.D_PTS + 2], POINTS.Y[i], POINTS.Y[i + PARAMETERS.C_PTS + 1], POINTS.Y[i + PARAMETERS.C_PTS + PARAMETERS.D_PTS + 2], PARAMETERS.EPSILON) == 1)
-		{
-			return 1;
-		}
-	}
-	return 0;
-}
-
-
 
 /*
 There exists at least one set of three consecutive data points that are the vertices of a triangle
