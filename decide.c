@@ -172,6 +172,24 @@ boolean LIC_2()
 }
 
 /*
+There exists at least one set of three consecutive data points that are the vertices of a triangle
+with area greater than AREA1.
+(0 ≤ AREA1)
+*/
+boolean LIC_3() 
+{
+	int i;
+	for (i=0; i < (NUMPOINTS-2); i++) 
+	{
+		if(Area(POINTS.X[i],POINTS.X[i+1],POINTS.X[i+2],POINTS.Y[i],POINTS.Y[i+1],POINTS.Y[i+2],PARAMETERS.AREA1) == 1)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
+/*
 There exists at least one set of Q PTS consecutive data points that lie in more than QUADS
 quadrants. Where there is ambiguity as to which quadrant contains a given point, priority
 of decision will be by quadrant number, i.e., I, II, III, IV. For example, the data point (0,0)
@@ -497,24 +515,6 @@ boolean LIC_13()
 			marker2 = 1;
 		}
 		if((marker1 == 1) && (marker2 == 1))
-		{
-			return 1;
-		}
-	}
-	return 0;
-}
-
-/*
-There exists at least one set of three consecutive data points that are the vertices of a triangle
-with area greater than AREA1.
-(0 ≤ AREA1)
-*/
-boolean LIC_3() 
-{
-	int i;
-	for (i=0; i < (NUMPOINTS-2); i++) 
-	{
-		if(Area(POINTS.X[i],POINTS.X[i+1],POINTS.X[i+2],POINTS.Y[i],POINTS.Y[i+1],POINTS.Y[i+2],PARAMETERS.AREA1) == 1)
 		{
 			return 1;
 		}
