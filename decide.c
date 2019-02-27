@@ -117,10 +117,11 @@ the length, LENGTH1, apart.
 boolean LIC_0()
 {
     int i;
-    double distance;
+    double distance, deltaX;
     for(i=0; i<(NUMPOINTS-1); i++)
     {
-        distance=sqrt(pow(POINTS.X[i]-POINTS.X[i+1],2)+pow(POINTS.Y[i]-POINTS.Y[i+1],2));
+		deltaX = POINTS.X[i]-POINTS.X[i+1];
+        distance=sqrt(pow(deltaX,2)+pow(POINTS.Y[i]-POINTS.Y[i+1],2));
         if (DOUBLECOMPARE(distance, PARAMETERS.LENGTH1)==GT)
         {
             return 1; // distance between two points is greater than LENGTH1 (which means the object is fast, indicating a rocket)
