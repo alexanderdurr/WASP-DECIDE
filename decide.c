@@ -269,18 +269,21 @@ boolean LIC_6()
 		return 0;
 	}
 	int i;
-	double side12, side23, side13, angle12, angle23, angle13, deltaX;
+	double side12, side23, side13, angle12, angle23, angle13, deltaX, deltaY;
 	for (i=0; i <= NUMPOINTS-PARAMETERS.N_PTS; i++) 
 	{
 		int innerpoint;
 		for (innerpoint=0; innerpoint < (PARAMETERS.N_PTS-2); innerpoint++) 
 		{
 			deltaX = POINTS.X[i] - POINTS.X[i+PARAMETERS.N_PTS-1];
-			side12 = sqrt(pow(deltaX,2)+pow(POINTS.Y[i] - POINTS.Y[i+PARAMETERS.N_PTS-1],2));
+			deltaY = POINTS.Y[i] - POINTS.Y[i+PARAMETERS.N_PTS-1];
+			side12 = sqrt(pow(deltaX,2)+pow(deltaY,2));
 			deltaX = POINTS.X[i+PARAMETERS.N_PTS-1] - POINTS.X[i+innerpoint+1];
-			side23 = sqrt(pow(deltaX,2)+pow(POINTS.Y[i+PARAMETERS.N_PTS-1] - POINTS.Y[i+innerpoint+1],2));
+			deltaY = POINTS.Y[i+PARAMETERS.N_PTS-1] - POINTS.Y[i+innerpoint+1];
+			side23 = sqrt(pow(deltaX,2)+pow(deltaY,2));
 			deltaX = POINTS.X[i] - POINTS.X[i+innerpoint+1];
-			side13 = sqrt(pow(deltaX,2)+pow(POINTS.Y[i] - POINTS.Y[i+innerpoint+1],2));
+			deltaY = POINTS.Y[i] - POINTS.Y[i+innerpoint+1];
+			side13 = sqrt(pow(deltaX,2)+pow(deltaY,2));
 			if(DOUBLECOMPARE(side12, 0) == EQ)
 			{
 				if(DOUBLECOMPARE(side23, PARAMETERS.DIST) == GT)
