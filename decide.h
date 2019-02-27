@@ -30,10 +30,14 @@ typedef struct {
   double AREA2;     // Maximum area in LIC 14
 } PARAMETERS_T;
 
+typedef struct {
+  double *X;
+  double *Y;
+}POINTS_T;
+
 // declare global variables
 PARAMETERS_T PARAMETERS;
-double *X;
-double *Y;
+POINTS_T POINTS;
 int NUMPOINTS;
 
 // compares floating point numbers -- see Nonfunctional Requirements
