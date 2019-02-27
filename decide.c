@@ -32,6 +32,8 @@ boolean *PUV;
 boolean *FUV;
 boolean LAUNCH;
 
+double PI = 3.1415926535;
+
 void DECIDE(void)
 {
     // Compute Conditions Met Vektor (CMV)
@@ -418,10 +420,10 @@ boolean LIC_6()
 			{
 				angle23 = acos(temp);
 			}
-			angle13 = 3.1415926535 - (angle12+angle23);
-			if((DOUBLECOMPARE(angle13, 3.1415926535/2) == GT) ||(DOUBLECOMPARE(angle13, 3.1415926535/2) == EQ))
+			angle13 = PI - (angle12+angle23);
+			if((DOUBLECOMPARE(angle13, PI/2) == GT) ||(DOUBLECOMPARE(angle13, PI/2) == EQ))
 			{
-				if(DOUBLECOMPARE(sin(3.1415926535 - angle13)*side23, PARAMETERS.DIST) == GT)
+				if(DOUBLECOMPARE(sin(PI - angle13)*side23, PARAMETERS.DIST) == GT)
 				{
 					return 1;
 				}
@@ -430,9 +432,9 @@ boolean LIC_6()
 					continue;
 				}
 			}
-			else if((DOUBLECOMPARE(angle23, 3.1415926535/2) == GT) ||(DOUBLECOMPARE(angle23, 3.1415926535/2) == EQ))
+			else if((DOUBLECOMPARE(angle23, PI/2) == GT) ||(DOUBLECOMPARE(angle23, PI/2) == EQ))
 			{
-				if(DOUBLECOMPARE(sin(3.1415926535 - angle23)*side13, PARAMETERS.DIST) == GT)
+				if(DOUBLECOMPARE(sin(PI - angle23)*side13, PARAMETERS.DIST) == GT)
 				{
 					return 1;
 				}
@@ -607,7 +609,7 @@ boolean Angle(double X1,double X2,double X3,double Y1,double Y2,double Y3, doubl
 	{
 		angle13 = acos(temp);
 	}		
-	if((DOUBLECOMPARE(angle13, (3.1415926535 + Epsilon)) == GT) ||(DOUBLECOMPARE(angle13, (3.1415926535 - Epsilon)) == LT))
+	if((DOUBLECOMPARE(angle13, (PI + Epsilon)) == GT) ||(DOUBLECOMPARE(angle13, (PI - Epsilon)) == LT))
 	{
 		return 1;
 	}
@@ -665,16 +667,16 @@ boolean circle(double X1,double X2,double X3,double Y1,double Y2,double Y3,doubl
 	{
 		angle23 = acos(temp);
 	}
-	angle13 = 3.1415926535 - (angle12+angle23); 
-	if((DOUBLECOMPARE(angle13, 3.1415926535/2) == GT) ||(DOUBLECOMPARE(angle13, 3.1415926535/2) == EQ))
+	angle13 = PI - (angle12+angle23); 
+	if((DOUBLECOMPARE(angle13, PI/2) == GT) ||(DOUBLECOMPARE(angle13, PI/2) == EQ))
 	{
 		return 0;
 	}
-	else if((DOUBLECOMPARE(angle23, 3.1415926535/2) == GT) ||(DOUBLECOMPARE(angle23, 3.1415926535/2) == EQ))
+	else if((DOUBLECOMPARE(angle23, PI/2) == GT) ||(DOUBLECOMPARE(angle23, PI/2) == EQ))
 	{
 		return 0;
 	}
-	else if((DOUBLECOMPARE(angle12, 3.1415926535/2) == GT) ||(DOUBLECOMPARE(angle12, 3.1415926535/2) == EQ))
+	else if((DOUBLECOMPARE(angle12, PI/2) == GT) ||(DOUBLECOMPARE(angle12, PI/2) == EQ))
 	{
 		return 0;
 	}
