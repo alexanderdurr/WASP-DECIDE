@@ -202,6 +202,8 @@ void DECIDE(void)
 					temp= CMV[i] || CMV[j];
 				case ANDD:
 					temp= CMV[i] && CMV[j];
+				default:
+					temp=1;
 			}
 			PUM[i][j] = temp;
 			PUM[j][i] = PUM[i][j];
