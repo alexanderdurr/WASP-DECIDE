@@ -1,5 +1,7 @@
 #include <math.h>
 
+static const double PI = 3.1415926535;
+
 typedef int boolean;
 typedef enum { LT=1111,EQ,GT} COMPTYPE;
 typedef enum { NOTUSED =777, ORR, ANDD} CONNECTORS;
@@ -46,7 +48,6 @@ boolean *PUV;
 boolean *FUV;
 boolean LAUNCH;
 
-double PI = 3.1415926535;
 // compares floating point numbers -- see Nonfunctional Requirements
 static inline
 COMPTYPE DOUBLECOMPARE(double A, double B)
