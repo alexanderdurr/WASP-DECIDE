@@ -115,8 +115,7 @@ the length, LENGTH1, apart.
 (0 ≤ LENGTH1)
 */
 double euclideanDistance(double deltaX, double deltaY){
-	double dist = sqrt(pow(deltaX,2)+pow(deltaY,2));
-	return dist;
+	return sqrt(pow(deltaX,2)+pow(deltaY,2));
 }
 boolean LIC_0()
 {
