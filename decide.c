@@ -130,6 +130,25 @@ boolean LIC_0()
 }
 
 /*
+There exists at least one set of three consecutive data points that cannot all be contained
+within or on a circle of radius RADIUS1.
+(0 ≤ RADIUS1)
+*/
+boolean LIC_1()
+{ 
+  	int i;
+	for (i=0; i < (NUMPOINTS-2); i++) 
+	{
+		if(circle( POINTS.X[i],POINTS.X[i+1],POINTS.X[i+2],POINTS.Y[i],POINTS.Y[i+1],POINTS.Y[i+2],PARAMETERS.RADIUS1) == 1)
+		{
+			return 1;
+		}
+		
+	}
+	return 0;
+}
+
+/*
 There exists at least one set of Q PTS consecutive data points that lie in more than QUADS
 quadrants. Where there is ambiguity as to which quadrant contains a given point, priority
 of decision will be by quadrant number, i.e., I, II, III, IV. For example, the data point (0,0)
@@ -332,25 +351,6 @@ boolean LIC_13()
 		{
 			return 1;
 		}
-	}
-	return 0;
-}
-
-/*
-There exists at least one set of three consecutive data points that cannot all be contained
-within or on a circle of radius RADIUS1.
-(0 ≤ RADIUS1)
-*/
-boolean LIC_1()
-{ 
-  	int i;
-	for (i=0; i < (NUMPOINTS-2); i++) 
-	{
-		if(circle( POINTS.X[i],POINTS.X[i+1],POINTS.X[i+2],POINTS.Y[i],POINTS.Y[i+1],POINTS.Y[i+2],PARAMETERS.RADIUS1) == 1)
-		{
-			return 1;
-		}
-		
 	}
 	return 0;
 }
