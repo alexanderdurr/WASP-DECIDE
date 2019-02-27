@@ -426,6 +426,29 @@ boolean LIC_9()
 }
 
 /*
+There exists at least one set of three data points separated by exactly E PTS and F PTS consecutive intervening points, respectively, that are the vertices of a triangle with area greater
+than AREA1. The condition is not met when NUMPOINTS < 5.
+1 ≤ E PTS, 1 ≤ F PTS
+E PTS+F PTS ≤ NUMPOINTS−3
+*/
+boolean LIC_10()
+{
+	if (NUMPOINTS < 5)
+	{
+		return 0;
+	}
+	int i;
+	for (i=0; i < (NUMPOINTS-(PARAMETERS.E_PTS + PARAMETERS.F_PTS)-2); i++)
+	{
+		if (Area( POINTS.X[i], POINTS.X[i + PARAMETERS.E_PTS + 1], POINTS.X[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2], POINTS.Y[i], POINTS.Y[i + PARAMETERS.E_PTS + 1], POINTS.Y[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2], PARAMETERS.AREA1) == 1)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
+/*
 There exists at least one set of two data points, (X[i],Y[i]) and (X[j],Y[j]), separated by
 exactly G PTS consecutive intervening points, such that X[j] - X[i] < 0. (where i < j ) The
 condition is not met when NUMPOINTS < 3.
@@ -522,28 +545,7 @@ boolean LIC_13()
 	return 0;
 }
 
-/*
-There exists at least one set of three data points separated by exactly E PTS and F PTS consecutive intervening points, respectively, that are the vertices of a triangle with area greater
-than AREA1. The condition is not met when NUMPOINTS < 5.
-1 ≤ E PTS, 1 ≤ F PTS
-E PTS+F PTS ≤ NUMPOINTS−3
-*/
-boolean LIC_10()
-{
-	if (NUMPOINTS < 5)
-	{
-		return 0;
-	}
-	int i;
-	for (i=0; i < (NUMPOINTS-(PARAMETERS.E_PTS + PARAMETERS.F_PTS)-2); i++)
-	{
-		if (Area( POINTS.X[i], POINTS.X[i + PARAMETERS.E_PTS + 1], POINTS.X[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2], POINTS.Y[i], POINTS.Y[i + PARAMETERS.E_PTS + 1], POINTS.Y[i + PARAMETERS.E_PTS + PARAMETERS.F_PTS + 2], PARAMETERS.AREA1) == 1)
-		{
-			return 1;
-		}
-	}
-	return 0;
-}
+
 
 /*
 There exists at least one set of three data points, separated by exactly E PTS and F PTS consecutive intervening points, respectively, that are the vertices of a triangle with area greater
