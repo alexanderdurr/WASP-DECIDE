@@ -3,6 +3,7 @@
 typedef int boolean;
 typedef enum { LT=1111,EQ,GT} COMPTYPE;
 typedef enum { NOTUSED =777, ORR, ANDD} CONNECTORS;
+typedef double *COORDINATE;
 
 // inputs
 typedef struct {
@@ -28,8 +29,8 @@ typedef struct {
 } PARAMETERS_T;
 
 typedef struct {
-  double *X;
-  double *Y;
+  COORDINATE X;
+  COORDINATE Y;
 }POINTS_T;
 
 // declare global variables
