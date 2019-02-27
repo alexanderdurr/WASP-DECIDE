@@ -492,7 +492,7 @@ for the LIC to be true. The condition is not met when NUMPOINTS < 3.
 */
 boolean LIC_12() 
 {
-	double distance,deltaX;
+	double distance,deltaX,deltaY;
 	boolean marker1 = 0;
 	boolean marker2 = 0;
 	if(NUMPOINTS < 3)
@@ -503,7 +503,8 @@ boolean LIC_12()
 	for(i=0; i < (NUMPOINTS - PARAMETERS.K_PTS - 1); i++)
 	{	
 		deltaX = POINTS.X[i+PARAMETERS.K_PTS + 1] - POINTS.X[i];
-		distance = sqrt(pow(deltaX,2)+pow(POINTS.Y[i+PARAMETERS.K_PTS + 1] - POINTS.Y[i],2));
+		deltaY = POINTS.Y[i+PARAMETERS.K_PTS + 1] - POINTS.Y[i];
+		distance = sqrt(pow(deltaX,2)+pow(deltaY,2));
 		if(DOUBLECOMPARE(distance, PARAMETERS.LENGTH1) == GT)
 		{
 			marker1 = 1;
