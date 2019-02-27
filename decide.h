@@ -8,6 +8,7 @@ typedef enum { NOTUSED =777, ORR, ANDD} CONNECTORS;
 typedef double *COORDINATE;
 typedef CONNECTORS **CMATRIX;
 typedef boolean **BMATRIX;
+typedef boolean *VECTOR;
 
 // inputs
 typedef struct {
@@ -41,11 +42,11 @@ typedef struct {
 PARAMETERS_T PARAMETERS;
 POINTS_T POINTS;
 int NUMPOINTS;
-boolean *CMV;
+VECTOR CMV;
 CMATRIX LCM;
 BMATRIX PUM;
-boolean *PUV;
-boolean *FUV;
+VECTOR PUV;
+VECTOR FUV;
 boolean LAUNCH;
 
 // compares floating point numbers -- see Nonfunctional Requirements
