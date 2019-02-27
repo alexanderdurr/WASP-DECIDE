@@ -1,7 +1,5 @@
 #include "decide.h"
 
-typedef int boolean;
-
 // declare LICs
 boolean LIC_0();
 boolean LIC_1();
@@ -23,17 +21,6 @@ boolean Circle(double X1, double X2, double X3, double Y1, double Y2, double Y3,
 boolean Area(double X1, double X2, double X3, double Y1, double Y2, double Y3, double Radius);
 boolean Angle(double X1, double X2, double X3, double Y1, double Y2, double Y3, double Epsilon);
 double euclideanDistance(double deltaX, double deltaY);
-
-boolean *CMV;
-boolean **PMV;
-typedef enum { NOTUSED =777, ORR, ANDD} CONNECTORS;
-CONNECTORS **LCM;
-boolean **PUM;
-boolean *PUV;
-boolean *FUV;
-boolean LAUNCH;
-
-double PI = 3.1415926535;
 
 void DECIDE(void)
 {
