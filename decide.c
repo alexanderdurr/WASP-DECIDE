@@ -374,7 +374,7 @@ boolean LIC_7()
 	{
 		deltaX = POINTS.X[i] - POINTS.X[i+PARAMETERS.K_PTS+1];
 		deltaY = POINTS.Y[i] - POINTS.Y[i+PARAMETERS.K_PTS+1];
-		distance = sqrt(pow(deltaX,2)+pow(deltaY,2));
+		distance = euclideanDistance(deltaX, deltaY);
 		if (DOUBLECOMPARE(distance, PARAMETERS.LENGTH1) == GT) 
 		{
 			return 1; 
