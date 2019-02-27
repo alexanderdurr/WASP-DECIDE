@@ -369,10 +369,11 @@ boolean LIC_7()
 		return 0;
 	}
 	int i;
-	double distance;
+	double distance, deltaX;
 	for (i=0; i < NUMPOINTS-1-PARAMETERS.K_PTS; i++) 
 	{
-		distance = sqrt(pow(POINTS.X[i] - POINTS.X[i+PARAMETERS.K_PTS+1],2)+pow(POINTS.Y[i] - POINTS.Y[i+PARAMETERS.K_PTS+1],2));
+		deltaX = POINTS.X[i] - POINTS.X[i+PARAMETERS.K_PTS+1];
+		distance = sqrt(pow(deltaX,2)+pow(POINTS.Y[i] - POINTS.Y[i+PARAMETERS.K_PTS+1],2));
 		if (DOUBLECOMPARE(distance, PARAMETERS.LENGTH1) == GT) 
 		{
 			return 1; 
