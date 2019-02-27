@@ -8,7 +8,7 @@ hello.o: hello.c
 	$(CC) -c hello.c
 
 example1_decide: example1_decide.o decide.o
-	$(CC) -o example1_decide example1_decide.o decide.o
+	$(CC) -o example1_decide example1_decide.o decide.o -lm
 	make removeO
 
 example1_decide.o: example1_decide.c
