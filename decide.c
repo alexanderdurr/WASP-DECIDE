@@ -19,7 +19,7 @@ boolean LIC_12();
 boolean LIC_13();
 boolean LIC_14();
 
-boolean circle(double X1, double X2, double X3, double Y1, double Y2, double Y3, double Radius);
+boolean Circle(double X1, double X2, double X3, double Y1, double Y2, double Y3, double Radius);
 boolean Area(double X1, double X2, double X3, double Y1, double Y2, double Y3, double Radius);
 boolean Angle(double X1, double X2, double X3, double Y1, double Y2, double Y3, double Epsilon);
 
@@ -144,7 +144,7 @@ boolean LIC_1()
   	int i;
 	for (i=0; i < (NUMPOINTS-2); i++) 
 	{
-		if(circle( POINTS.X[i],POINTS.X[i+1],POINTS.X[i+2],POINTS.Y[i],POINTS.Y[i+1],POINTS.Y[i+2],PARAMETERS.RADIUS1) == 1)
+		if(Circle( POINTS.X[i],POINTS.X[i+1],POINTS.X[i+2],POINTS.Y[i],POINTS.Y[i+1],POINTS.Y[i+2],PARAMETERS.RADIUS1) == 1)
 		{
 			return 1;
 		}
@@ -393,7 +393,7 @@ boolean LIC_8()
   	int i;
 	for (i=0; i < NUMPOINTS-2- PARAMETERS.A_PTS-PARAMETERS.B_PTS; i++) 
 	{
-		if(circle(POINTS.X[i],POINTS.X[i+PARAMETERS.A_PTS+1],POINTS.X[i+PARAMETERS.A_PTS+PARAMETERS.B_PTS+2],POINTS.Y[i],POINTS.Y[i+PARAMETERS.A_PTS+1],POINTS.Y[i+PARAMETERS.A_PTS+PARAMETERS.B_PTS+2],PARAMETERS.RADIUS1) == 1)
+		if(Circle(POINTS.X[i],POINTS.X[i+PARAMETERS.A_PTS+1],POINTS.X[i+PARAMETERS.A_PTS+PARAMETERS.B_PTS+2],POINTS.Y[i],POINTS.Y[i+PARAMETERS.A_PTS+1],POINTS.Y[i+PARAMETERS.A_PTS+PARAMETERS.B_PTS+2],PARAMETERS.RADIUS1) == 1)
 		{
 			return 1;
 		}
@@ -534,11 +534,11 @@ boolean LIC_13()
 	boolean marker2 = 0;
 	for(i = 0; i < (NUMPOINTS - (PARAMETERS.A_PTS + PARAMETERS.B_PTS) - 2); i++)
 	{	
-		if ((marker1 != 1) && (circle(POINTS.X[i],POINTS.X[i + PARAMETERS.A_PTS + 1],POINTS.X[i + PARAMETERS.A_PTS + PARAMETERS.B_PTS + 2],POINTS.Y[i],POINTS.Y[i + PARAMETERS.A_PTS + 1],POINTS.Y[i + PARAMETERS.B_PTS + PARAMETERS.A_PTS + 2],PARAMETERS.RADIUS1) == 1))
+		if ((marker1 != 1) && (Circle(POINTS.X[i],POINTS.X[i + PARAMETERS.A_PTS + 1],POINTS.X[i + PARAMETERS.A_PTS + PARAMETERS.B_PTS + 2],POINTS.Y[i],POINTS.Y[i + PARAMETERS.A_PTS + 1],POINTS.Y[i + PARAMETERS.B_PTS + PARAMETERS.A_PTS + 2],PARAMETERS.RADIUS1) == 1))
 		{
 			marker1 = 1;	
 		}
-		if ((marker2 != 1) && (circle(POINTS.X[i],POINTS.X[i + PARAMETERS.A_PTS + 1],POINTS.X[i + PARAMETERS.A_PTS + PARAMETERS.B_PTS + 2],POINTS.Y[i],POINTS.Y[i + PARAMETERS.A_PTS + 1],POINTS.Y[i + PARAMETERS.B_PTS + PARAMETERS.A_PTS + 2],PARAMETERS.RADIUS2) == 0))
+		if ((marker2 != 1) && (Circle(POINTS.X[i],POINTS.X[i + PARAMETERS.A_PTS + 1],POINTS.X[i + PARAMETERS.A_PTS + PARAMETERS.B_PTS + 2],POINTS.Y[i],POINTS.Y[i + PARAMETERS.A_PTS + 1],POINTS.Y[i + PARAMETERS.B_PTS + PARAMETERS.A_PTS + 2],PARAMETERS.RADIUS2) == 0))
 		{
 			marker2 = 1;
 		}
@@ -624,7 +624,7 @@ boolean Angle(double X1,double X2,double X3,double Y1,double Y2,double Y3, doubl
 /*
 Helper function to determine if a set of 3 points is outside of a circle of radius Radius
 */
-boolean circle(double X1,double X2,double X3,double Y1,double Y2,double Y3,double Radius)
+boolean Circle(double X1,double X2,double X3,double Y1,double Y2,double Y3,double Radius)
 {
  	double angle12, angle23, angle13;
 	double side12 = sqrt(pow(X1 - X2,2)+pow(Y1 - Y2,2));
