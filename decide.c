@@ -19,146 +19,9 @@ boolean LIC_12();
 boolean LIC_13();
 boolean LIC_14();
 
-/*
-Helper function to determine if 3 points have an angle not within pi +- epsilon
-*/
-boolean Angle(double X1,double X2,double X3,double Y1,double Y2,double Y3, double Epsilon)
-{
-	double side12 = sqrt(pow(X1 - X2,2)+pow(Y1 - Y2,2));
-	double side23 = sqrt(pow(X2 - X3,2)+pow(Y2 - Y3,2));
-	double side13 = sqrt(pow(X1 - X3,2)+pow(Y1 - Y3,2));
-	if((DOUBLECOMPARE(side12, 0) == EQ)||(DOUBLECOMPARE(side23, 0) == EQ))
-	{
-		return 0;
-	}
-	double temp = ((pow(side23,2) + pow(side12,2) - pow(side13,2)) / (2*side23*side12));
-	double angle13;
-	if(DOUBLECOMPARE(temp, 1.0) == EQ)
-	{
-		angle13 = acos(1.0);
-	}
-	else if(DOUBLECOMPARE(temp, -1.0) == EQ)
-	{
-		angle13 = acos(-1.0);
-	}
-	else
-	{
-		angle13 = acos(temp);
-	}		
-	if((DOUBLECOMPARE(angle13, (3.1415926535 + Epsilon)) == GT) ||(DOUBLECOMPARE(angle13, (3.1415926535 - Epsilon)) == LT))
-	{
-		return 1;
-	}
-	return 0;
-}
-
-/*
-Helper function to determine if a set of 3 points is outside of a circle of radius Radius
-*/
-boolean circle(double X1,double X2,double X3,double Y1,double Y2,double Y3,double Radius)
-{
- 	double angle12, angle23, angle13;
-	double side12 = sqrt(pow(X1 - X2,2)+pow(Y1 - Y2,2));
-	double side23 = sqrt(pow(X2 - X3,2)+pow(Y2 - Y3,2));
-	double side13 = sqrt(pow(X1 - X3,2)+pow(Y1 - Y3,2));
-	if(DOUBLECOMPARE(side12, Radius*2) == GT)
-	{
-		return 1;
-	}
-	if(DOUBLECOMPARE(side23, Radius*2) == GT)
-	{
-		return 1;
-	}
-	if(DOUBLECOMPARE(side13, Radius*2) == GT)
-	{
-		return 1;
-	}
-	if((DOUBLECOMPARE(side13, 0) == EQ)||(DOUBLECOMPARE(side12, 0) == EQ)||(DOUBLECOMPARE(side23, 0) == EQ))
-	{
-		return 0;
-	}
-	double temp = ((pow(side23,2) + pow(side13,2) - pow(side12,2)) / (2*side23*side13));
-	if(DOUBLECOMPARE(temp, 1.0) == EQ)
-	{
-		angle12 = acos(1.0);
-	}
-	else if(DOUBLECOMPARE(temp, -1.0) == EQ)
-	{
-		angle12 = acos(-1.0);
-	}
-	else
-	{
-		angle12 = acos(temp);
-	}
-	temp = ((pow(side12,2) + pow(side13,2) - pow(side23,2)) / (2*side12*side13));
-	if(DOUBLECOMPARE(temp, 1.0) == EQ)
-	{
-		angle23 = acos(1.0);
-	}
-	else if(DOUBLECOMPARE(temp, -1.0) == EQ)
-	{
-		angle23 = acos(-1.0);
-	}
-	else
-	{
-		angle23 = acos(temp);
-	}
-	angle13 = 3.1415926535 - (angle12+angle23); 
-	if((DOUBLECOMPARE(angle13, 3.1415926535/2) == GT) ||(DOUBLECOMPARE(angle13, 3.1415926535/2) == EQ))
-	{
-		return 0;
-	}
-	else if((DOUBLECOMPARE(angle23, 3.1415926535/2) == GT) ||(DOUBLECOMPARE(angle23, 3.1415926535/2) == EQ))
-	{
-		return 0;
-	}
-	else if((DOUBLECOMPARE(angle12, 3.1415926535/2) == GT) ||(DOUBLECOMPARE(angle12, 3.1415926535/2) == EQ))
-	{
-		return 0;
-	}
-	else
-	{
-		temp = (side12*side23*side13)/sqrt((side12+side23+side13)*(side13+side23-side12)*(side12+side13-side23)*(side12+side23-side13));
-		if(DOUBLECOMPARE(temp, Radius) == GT)
-		{
-			return 1;
-		}
-	}
-	return 0;
-}
-
-/*
-Helper function to determine if area of triangle is greater than Area
-*/
-boolean Area(double X1,double X2,double X3,double Y1,double Y2,double Y3,double Area)
-{
-	double sida12 = sqrt(pow(X1 - X2,2)+pow(Y1 - Y2,2));
-	double sida23 = sqrt(pow(X2 - X3,2)+pow(Y2 - Y3,2));
-	double sida13 = sqrt(pow(X1 - X3,2)+pow(Y1 - Y3,2));
-	double temp = (((sida12+sida23+sida13)/2)*(((sida12+sida23+sida13)/2)-sida12)*(((sida12+sida23+sida13)/2)-sida23)*(((sida12+sida23+sida13)/2)-sida13));
-	if((DOUBLECOMPARE(temp, -0) == EQ))
-	{
-		temp = 0;
-	}
-	double area = sqrt(temp);
-	if((DOUBLECOMPARE(((sida12+sida23+sida13)/2), sida23) == EQ)||(DOUBLECOMPARE(((sida12+sida23+sida13)/2), sida12) == EQ)||(DOUBLECOMPARE(((sida12+sida23+sida13)/2), sida13) == EQ))//This is a flat line since have the perimeter is the same size as one side
-	{
-		double area2 = (X1*(Y2-Y3))+(X2*(Y3-Y1))+(X3*(Y1-Y2));
-		area2 = area2*area2;
-		area2 = sqrt(area2);
-		area2 = .5*area2;
-		if(DOUBLECOMPARE(area2, Area) == GT)
-		{
-			return 1;
-		}
-		return 0;
-	}
-	if(DOUBLECOMPARE(area, Area) == GT)
-	{
-		return 1;
-	}
-	return 0;
-} 
+boolean circle(double X1, double X2, double X3, double Y1, double Y2, double Y3, double Radius);
+boolean Area(double X1, double X2, double X3, double Y1, double Y2, double Y3, double Radius);
+boolean Angle(double X1, double X2, double X3, double Y1, double Y2, double Y3, double Epsilon);
 
 boolean *CMV;
 boolean **PMV;
@@ -716,3 +579,145 @@ boolean LIC_14()
 	}
 	return 0;				
 }
+
+
+/*
+Helper function to determine if 3 points have an angle not within pi +- epsilon
+*/
+boolean Angle(double X1,double X2,double X3,double Y1,double Y2,double Y3, double Epsilon)
+{
+	double side12 = sqrt(pow(X1 - X2,2)+pow(Y1 - Y2,2));
+	double side23 = sqrt(pow(X2 - X3,2)+pow(Y2 - Y3,2));
+	double side13 = sqrt(pow(X1 - X3,2)+pow(Y1 - Y3,2));
+	if((DOUBLECOMPARE(side12, 0) == EQ)||(DOUBLECOMPARE(side23, 0) == EQ))
+	{
+		return 0;
+	}
+	double temp = ((pow(side23,2) + pow(side12,2) - pow(side13,2)) / (2*side23*side12));
+	double angle13;
+	if(DOUBLECOMPARE(temp, 1.0) == EQ)
+	{
+		angle13 = acos(1.0);
+	}
+	else if(DOUBLECOMPARE(temp, -1.0) == EQ)
+	{
+		angle13 = acos(-1.0);
+	}
+	else
+	{
+		angle13 = acos(temp);
+	}		
+	if((DOUBLECOMPARE(angle13, (3.1415926535 + Epsilon)) == GT) ||(DOUBLECOMPARE(angle13, (3.1415926535 - Epsilon)) == LT))
+	{
+		return 1;
+	}
+	return 0;
+}
+
+/*
+Helper function to determine if a set of 3 points is outside of a circle of radius Radius
+*/
+boolean circle(double X1,double X2,double X3,double Y1,double Y2,double Y3,double Radius)
+{
+ 	double angle12, angle23, angle13;
+	double side12 = sqrt(pow(X1 - X2,2)+pow(Y1 - Y2,2));
+	double side23 = sqrt(pow(X2 - X3,2)+pow(Y2 - Y3,2));
+	double side13 = sqrt(pow(X1 - X3,2)+pow(Y1 - Y3,2));
+	if(DOUBLECOMPARE(side12, Radius*2) == GT)
+	{
+		return 1;
+	}
+	if(DOUBLECOMPARE(side23, Radius*2) == GT)
+	{
+		return 1;
+	}
+	if(DOUBLECOMPARE(side13, Radius*2) == GT)
+	{
+		return 1;
+	}
+	if((DOUBLECOMPARE(side13, 0) == EQ)||(DOUBLECOMPARE(side12, 0) == EQ)||(DOUBLECOMPARE(side23, 0) == EQ))
+	{
+		return 0;
+	}
+	double temp = ((pow(side23,2) + pow(side13,2) - pow(side12,2)) / (2*side23*side13));
+	if(DOUBLECOMPARE(temp, 1.0) == EQ)
+	{
+		angle12 = acos(1.0);
+	}
+	else if(DOUBLECOMPARE(temp, -1.0) == EQ)
+	{
+		angle12 = acos(-1.0);
+	}
+	else
+	{
+		angle12 = acos(temp);
+	}
+	temp = ((pow(side12,2) + pow(side13,2) - pow(side23,2)) / (2*side12*side13));
+	if(DOUBLECOMPARE(temp, 1.0) == EQ)
+	{
+		angle23 = acos(1.0);
+	}
+	else if(DOUBLECOMPARE(temp, -1.0) == EQ)
+	{
+		angle23 = acos(-1.0);
+	}
+	else
+	{
+		angle23 = acos(temp);
+	}
+	angle13 = 3.1415926535 - (angle12+angle23); 
+	if((DOUBLECOMPARE(angle13, 3.1415926535/2) == GT) ||(DOUBLECOMPARE(angle13, 3.1415926535/2) == EQ))
+	{
+		return 0;
+	}
+	else if((DOUBLECOMPARE(angle23, 3.1415926535/2) == GT) ||(DOUBLECOMPARE(angle23, 3.1415926535/2) == EQ))
+	{
+		return 0;
+	}
+	else if((DOUBLECOMPARE(angle12, 3.1415926535/2) == GT) ||(DOUBLECOMPARE(angle12, 3.1415926535/2) == EQ))
+	{
+		return 0;
+	}
+	else
+	{
+		temp = (side12*side23*side13)/sqrt((side12+side23+side13)*(side13+side23-side12)*(side12+side13-side23)*(side12+side23-side13));
+		if(DOUBLECOMPARE(temp, Radius) == GT)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
+/*
+Helper function to determine if area of triangle is greater than Area
+*/
+boolean Area(double X1,double X2,double X3,double Y1,double Y2,double Y3,double Area)
+{
+	double sida12 = sqrt(pow(X1 - X2,2)+pow(Y1 - Y2,2));
+	double sida23 = sqrt(pow(X2 - X3,2)+pow(Y2 - Y3,2));
+	double sida13 = sqrt(pow(X1 - X3,2)+pow(Y1 - Y3,2));
+	double temp = (((sida12+sida23+sida13)/2)*(((sida12+sida23+sida13)/2)-sida12)*(((sida12+sida23+sida13)/2)-sida23)*(((sida12+sida23+sida13)/2)-sida13));
+	if((DOUBLECOMPARE(temp, -0) == EQ))
+	{
+		temp = 0;
+	}
+	double area = sqrt(temp);
+	if((DOUBLECOMPARE(((sida12+sida23+sida13)/2), sida23) == EQ)||(DOUBLECOMPARE(((sida12+sida23+sida13)/2), sida12) == EQ)||(DOUBLECOMPARE(((sida12+sida23+sida13)/2), sida13) == EQ))//This is a flat line since have the perimeter is the same size as one side
+	{
+		double area2 = (X1*(Y2-Y3))+(X2*(Y3-Y1))+(X3*(Y1-Y2));
+		area2 = area2*area2;
+		area2 = sqrt(area2);
+		area2 = .5*area2;
+		if(DOUBLECOMPARE(area2, Area) == GT)
+		{
+			return 1;
+		}
+		return 0;
+	}
+	if(DOUBLECOMPARE(area, Area) == GT)
+	{
+		return 1;
+	}
+	return 0;
+} 
