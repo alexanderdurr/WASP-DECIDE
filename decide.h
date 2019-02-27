@@ -7,6 +7,7 @@ typedef enum { LT=1111,EQ,GT} COMPTYPE;
 typedef enum { NOTUSED =777, ORR, ANDD} CONNECTORS;
 typedef double *COORDINATE;
 typedef CONNECTORS **CMATRIX;
+typedef boolean **BMATRIX;
 
 // inputs
 typedef struct {
@@ -41,9 +42,9 @@ PARAMETERS_T PARAMETERS;
 POINTS_T POINTS;
 int NUMPOINTS;
 boolean *CMV;
-boolean **PMV;
+BMATRIX PMV;
 CMATRIX LCM;
-boolean **PUM;
+BMATRIX PUM;
 boolean *PUV;
 boolean *FUV;
 boolean LAUNCH;
