@@ -504,7 +504,7 @@ boolean LIC_12()
 	{	
 		deltaX = POINTS.X[i+PARAMETERS.K_PTS + 1] - POINTS.X[i];
 		deltaY = POINTS.Y[i+PARAMETERS.K_PTS + 1] - POINTS.Y[i];
-		distance = sqrt(pow(deltaX,2)+pow(deltaY,2));
+		distance = euclideanDistance(deltaX, deltaY);
 		if(DOUBLECOMPARE(distance, PARAMETERS.LENGTH1) == GT)
 		{
 			marker1 = 1;
