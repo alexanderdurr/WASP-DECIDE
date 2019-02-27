@@ -1,5 +1,7 @@
 #include "decide.h"
 
+int numberOfLics =15;
+
 // declare LICs
 boolean LIC_0();
 boolean LIC_1();
@@ -43,9 +45,9 @@ void DECIDE(void)
 
 	int i,j;
 	boolean temp = 1;
-	for (i=0; i<=14; i++) 
+	for (i=0; i<numberOfLics; i++) 
 	{
-		for (j=i+1; j<=14; j++) 
+		for (j=i+1; j<numberOfLics; j++) 
 		{
 			switch (LCM[i][j])
 			{
@@ -63,7 +65,7 @@ void DECIDE(void)
 		}
 	}
 
-	for (i=0; i<=14; i++) 
+	for (i=0; i<numberOfLics; i++) 
 	{
 		if (PUV[i] == 0) 
 		{
@@ -72,7 +74,7 @@ void DECIDE(void)
 		else 
 		{
 			temp = 1; 
-			for (j=0; j<=14; j++) 
+			for (j=0; j<numberOfLics; j++) 
 			{
 				if (PUM[i][j] == 0) 
 				{
@@ -85,7 +87,7 @@ void DECIDE(void)
 	}
 
 	temp = 1;
-	for (i=0; i<=14; i++) 
+	for (i=0; i<numberOfLics; i++) 
 	{
 		if (FUV[i] == 0) 
 		{
