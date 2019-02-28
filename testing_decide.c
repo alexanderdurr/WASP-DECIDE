@@ -3,8 +3,26 @@
 
 int numberLICs = 15;
 
+// declare LICs
+boolean LIC_0();
+boolean LIC_1();
+boolean LIC_2();
+boolean LIC_3();
+boolean LIC_4();
+boolean LIC_5();
+boolean LIC_6();
+boolean LIC_7();
+boolean LIC_8();
+boolean LIC_9();
+boolean LIC_10();
+boolean LIC_11();
+boolean LIC_12();
+boolean LIC_13();
+boolean LIC_14();
+
 int main(void){
     // Set up a the problem in example 1 in the document
+    /*
      CONNECTORS aLCM[15][15];
     int i,j;
     for (i=0; i<numberLICs; i++) 
@@ -47,11 +65,12 @@ int main(void){
 		}
         printf("\n");
 	}
+    */
 
     PARAMETERS.LENGTH1=1;   // Length in LICs 0, 7, 12 // DOESNT LAUNCH WHEN 2, LAUNCHES WHEN 1 <-----------------------------------EXPERIMENT HERE-----------------------------------
     PARAMETERS.RADIUS1=1;   // Radius in LICs 1, 8, 13
     PARAMETERS.EPSILON=1;   // Deviation from PI in LICs 2, 9
-    PARAMETERS.AREA1=0.1;     // Area in LICs 3, 10, 14 // DOESNT LAUNCH WHEN 1, LAUNCHES WHEN 0.1 <------------------------------------EXPERIMENT HERE-----------------------------------
+    PARAMETERS.AREA1=1;     // Area in LICs 3, 10, 14 // DOESNT LAUNCH WHEN 1, LAUNCHES WHEN 0.1 <------------------------------------EXPERIMENT HERE-----------------------------------
     PARAMETERS.Q_PTS=1;        // No. of consecutive points in LIC 4
     PARAMETERS.QUADS=1;        // No. of quadrants in LIC 4
     PARAMETERS.DIST=1;      // Distance in LIC 6 
@@ -68,33 +87,67 @@ int main(void){
     PARAMETERS.RADIUS2=1;   // Maximum radius in LIC 13
     PARAMETERS.AREA2=1;     // Maximum area in LIC 14
 
-     NUMPOINTS = 10;
+    NUMPOINTS = 5;
     double X[NUMPOINTS];
-    X[0]=1;
+    double Y[NUMPOINTS];
+    boolean temp;
+    boolean oracle;
+
+    //LIC_0
+    printf("--- LIC_0 ---\n");
+    // Test Case 1
+    // Distance between every consecutive pair is equal to 1
+    X[0]=0;
     X[1]=1;
     X[2]=2;
     X[3]=3;
-    X[4]=3;
-    X[5]=3;
-    X[6]=3;
-    X[7]=2;
-    X[8]=2;
-    X[9]=2;
+    X[4]=4;
     POINTS.X = X;
-
-    double Y[NUMPOINTS];
-    Y[0]=3;
-    Y[1]=2;
-    Y[2]=1;
-    Y[3]=1;
-    Y[4]=1;
-    Y[5]=2;
-    Y[6]=1;
-    Y[7]=2;
-    Y[8]=1;
-    Y[9]=1;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=0;
+    Y[3]=0;
+    Y[4]=0;
     POINTS.Y = Y;
+    PARAMETERS.LENGTH1=2; // Allowed distance is in (0,2)
+    temp = LIC_0();
+    oracle = 0; // false
+    if(temp==oracle)
+    {
+        printf("Test 1: passed\n");
+    }
+    else
+    {
+        printf("Test 1: failed\n");
+    }
+    // Test Case 2
+    // Distance between every consecutive pair is equal to 1
+    X[0]=0;
+    X[1]=1;
+    X[2]=2;
+    X[3]=3;
+    X[4]=4;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=0;
+    Y[3]=0;
+    Y[4]=0;
+    POINTS.Y = Y;
+    PARAMETERS.LENGTH1=0.1; // Allowed distance is in (0,0.1)
+    temp = LIC_0();
+    oracle = 1; // true
+    if(temp==oracle)
+    {
+        printf("Test 2: passed\n");
+    }
+    else
+    {
+        printf("Test 2: failed\n");
+    }
+        
 
+    /*
     boolean aCMV[numberLICs];
     CMV = aCMV;
 
@@ -155,6 +208,6 @@ int main(void){
     printf("--- LAUNCH ---\n");
 	printf("%i", LAUNCH);
     printf("\n");
-    
+    */
     return 0;
 }
