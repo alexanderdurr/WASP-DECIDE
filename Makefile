@@ -25,7 +25,7 @@ decide.o: decide.c
 	$(CC) -c decide.c
 
 clean:
-	rm -f *.o hello  example1_decide
+	rm -f *.o hello  example1_decide example2_decide
 
 removeO:
 	rm -f *.o
