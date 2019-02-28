@@ -21,11 +21,18 @@ example2_decide: example2_decide.o decide.o
 example2_decide.o: example2_decide.c
 	$(CC) -c example2_decide.c
 
+testing_decide: testing_decide.o decide.o
+	$(CC) -o testing_decide testing_decide.o decide.o -lm
+	make removeO
+
+testing_decide.o: testing_decide.c
+	$(CC) -c testing_decide.c
+
 decide.o: decide.c
 	$(CC) -c decide.c
 
 clean:
-	rm -f *.o hello  example1_decide example2_decide
+	rm -f *.o hello  example1_decide example2_decide testing_decide
 
 removeO:
 	rm -f *.o
