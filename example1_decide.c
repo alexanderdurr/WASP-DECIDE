@@ -66,6 +66,32 @@ int main(void){
     PARAMETERS.RADIUS2=1;   // Maximum radius in LIC 13
     PARAMETERS.AREA2=1;     // Maximum area in LIC 14
 
+     NUMPOINTS = 10;
+    double X[NUMPOINTS];
+    X[0]=1;
+    X[1]=1;
+    X[2]=2;
+    X[3]=3;
+    X[4]=3;
+    X[5]=3;
+    X[6]=3;
+    X[7]=2;
+    X[8]=2;
+    X[9]=2;
+    POINTS.X = X;
+
+    double Y[NUMPOINTS];
+    Y[0]=3;
+    Y[1]=2;
+    Y[2]=1;
+    Y[3]=1;
+    Y[4]=1;
+    Y[5]=2;
+    Y[6]=1;
+    Y[7]=2;
+    Y[8]=1;
+    Y[9]=1;
+    POINTS.Y = Y;
 
     DECIDE();
 
