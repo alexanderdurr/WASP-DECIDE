@@ -69,6 +69,12 @@ void DECIDE(void)
 		}
 	}
 
+	// for printing the PUM when testing
+	for (i=0; i<numberOfLics; i++) 
+	{
+		PUM[i][i] = PUV[i];
+	}
+
 	for (i=0; i<numberOfLics; i++) 
 	{
 		if (PUV[i] == 0) 
