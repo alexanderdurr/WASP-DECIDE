@@ -207,7 +207,58 @@ int main(void){
         printf("Test 2: failed\n");
     }
 
-     
+     //LIC_3
+    printf("--- LIC_3 ---\n");
+    // Test Case 1
+    // Points in a line
+    X[0]=0;
+    X[1]=1;
+    X[2]=2;
+    X[3]=3;
+    X[4]=4;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=0;
+    Y[3]=0;
+    Y[4]=0;
+    POINTS.Y = Y;
+    PARAMETERS.AREA1=0.1; 
+    temp = LIC_3();
+    oracle = 0; // false, because the area is zero
+    if(temp==oracle)
+    {
+        printf("Test 1: passed\n");
+    }
+    else
+    {
+        printf("Test 1: failed\n");
+    }
+    // Test Case 2
+    // Points in a unit square
+    X[0]=0;
+    X[1]=1;
+    X[2]=1;
+    X[3]=0;
+    X[4]=0;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=1;
+    Y[3]=1;
+    Y[4]=0;
+    POINTS.Y = Y;
+    PARAMETERS.AREA1=0.1; 
+    temp = LIC_3();
+    oracle = 1;  // true, because the area is 0.5 
+    if(temp==oracle)
+    {
+        printf("Test 2: passed\n");
+    }
+    else
+    {
+        printf("Test 2: failed\n");
+    }
 
 
 
