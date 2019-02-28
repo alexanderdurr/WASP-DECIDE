@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include "decide.h"
 
+int numberLICs = 15;
+
 int main(void){
     // Set up a the problem in example 1 in the document
      CONNECTORS aLCM[15][15];
