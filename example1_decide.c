@@ -46,6 +46,27 @@ int main(void){
         printf("\n");
 	}
 
+    PARAMETERS.LENGTH1=1;   // Length in LICs 0, 7, 12 // DOESNT LAUNCH WHEN 2
+    PARAMETERS.RADIUS1=1;   // Radius in LICs 1, 8, 13
+    PARAMETERS.EPSILON=1;   // Deviation from PI in LICs 2, 9
+    PARAMETERS.AREA1=1;     // Area in LICs 3, 10, 14 // DOESNT LAUNCH WHEN 1
+    PARAMETERS.Q_PTS=1;        // No. of consecutive points in LIC 4
+    PARAMETERS.QUADS=1;        // No. of quadrants in LIC 4
+    PARAMETERS.DIST=1;      // Distance in LIC 6 
+    PARAMETERS.N_PTS=1;        // No. of consecutive pts. in LIC 6
+    PARAMETERS.K_PTS=1;        // No. of int. pts. in LICs 7, 12
+    PARAMETERS.A_PTS=1;        // No. of int. pts. in LICs 8, 13
+    PARAMETERS.B_PTS=1;        // No. of int. pts. in LICs 8, 13
+    PARAMETERS.C_PTS=1;        // No. of int. pts. in LIC 9
+    PARAMETERS.D_PTS=1;        // No. of int. pts. in LIC 9
+    PARAMETERS.E_PTS=1;        // No. of int. pts. in LICs 10, 14
+    PARAMETERS.F_PTS=1;        // No. of int. pts. in LICs 10, 14
+    PARAMETERS.G_PTS=1;        // No. of int. pts. in LIC 11
+    PARAMETERS.LENGTH2=1;   // Maximum length in LIC 12
+    PARAMETERS.RADIUS2=1;   // Maximum radius in LIC 13
+    PARAMETERS.AREA2=1;     // Maximum area in LIC 14
+
+
     DECIDE();
 
     printf("test");
