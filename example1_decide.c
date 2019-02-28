@@ -96,6 +96,11 @@ int main(void){
     boolean aCMV[numberLICs];
     CMV = aCMV;
 
+    boolean aPUM[numberLICs][numberLICs];
+    boolean *aux2[numberLICs];
+    PUM = (boolean **) aux2;
+    for(i=0;i<numberLICs;i++) aux2[i] = (boolean *) aPUM + i*numberLICs;
+
     DECIDE();
 
     printf("test");
