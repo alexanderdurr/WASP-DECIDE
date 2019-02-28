@@ -51,7 +51,7 @@ int main(void){
     PARAMETERS.LENGTH1=1;   // Length in LICs 0, 7, 12 // DOESNT LAUNCH WHEN 2, LAUNCHES WHEN 1 <-----------------------------------EXPERIMENT HERE-----------------------------------
     PARAMETERS.RADIUS1=1;   // Radius in LICs 1, 8, 13
     PARAMETERS.EPSILON=1;   // Deviation from PI in LICs 2, 9
-    PARAMETERS.AREA1=1;     // Area in LICs 3, 10, 14 // DOESNT LAUNCH WHEN 1, LAUNCHES WHEN 0.1 <------------------------------------EXPERIMENT HERE-----------------------------------
+    PARAMETERS.AREA1=0.1;     // Area in LICs 3, 10, 14 // DOESNT LAUNCH WHEN 1, LAUNCHES WHEN 0.1 <------------------------------------EXPERIMENT HERE-----------------------------------
     PARAMETERS.Q_PTS=1;        // No. of consecutive points in LIC 4
     PARAMETERS.QUADS=1;        // No. of quadrants in LIC 4
     PARAMETERS.DIST=1;      // Distance in LIC 6 
