@@ -93,6 +93,9 @@ int main(void){
     Y[9]=1;
     POINTS.Y = Y;
 
+    boolean aCMV[numberLICs];
+    CMV = aCMV;
+
     DECIDE();
 
     printf("test");
