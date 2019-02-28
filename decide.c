@@ -44,23 +44,27 @@ void DECIDE(void)
 	CMV[14] = LIC_14();
 
 	int i,j;
-	boolean temp = 1;
+	boolean temp;
 	for (i=0; i<numberOfLics; i++) 
 	{
 		for (j=i+1; j<numberOfLics; j++) 
 		{
-			switch (LCM[i][j])
+			if (LCM[i][j]==NOTUSED)
 			{
-				case NOTUSED:
-					temp= 1;
-				case ORR:
-					temp= CMV[i] || CMV[j];
-				case ANDD:
-					temp= CMV[i] && CMV[j];
-				default:
-					temp=1;
+				PUM[i][j]= 1;
 			}
-			PUM[i][j] = temp;
+			else if (LCM[i][j]==ORR)
+			{
+				PUM[i][j]= CMV[i] || CMV[j];
+			}
+			else if (LCM[i][j]==ANDD)
+			{
+				PUM[i][j]= CMV[i] && CMV[j];
+			}
+			else
+			{
+				PUM[i][j]=1;
+			}
 			PUM[j][i] = PUM[i][j];
 		}
 	}
