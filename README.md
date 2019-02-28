@@ -104,7 +104,7 @@ You can compile decide.c with
 make decide.o
 ```
 
-### Example
+### Example 1
 
 You can execute the example by compiling everything first
 
@@ -117,3 +117,27 @@ and then executing
 ```
 ./example1_decide
 ```
+
+This let's you compare the calculations of CMV, PUM, FUV of example 1 described in decide.pdf with the results of the program.
+(They are identical)
+
+### Example 2
+
+If you want to experiment on an easy example do the following
+
+```
+make example2_decide
+./example2_decide
+```
+
+By changing from 1 (in example1_decide.c) to 0.1 (in example2_decide)
+
+```
+PARAMETERS.AREA1=0.1;
+```
+
+the Launch Interceptor Condition 3 is set to true, which ultimately results in a launch.
+
+The difference of consecutive points (POINTS.X, POINTS.Y) is between 0 and sqrt(2). By changing to a value LENGTH1 over sqrt(2). This condition can be made false, resulting in no launch.
+
+Feel free to experiment!
