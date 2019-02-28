@@ -14,6 +14,13 @@ example1_decide: example1_decide.o decide.o
 example1_decide.o: example1_decide.c
 	$(CC) -c example1_decide.c
 
+example2_decide: example2_decide.o decide.o
+	$(CC) -o example2_decide example2_decide.o decide.o -lm
+	make removeO
+
+example2_decide.o: example2_decide.c
+	$(CC) -c example2_decide.c
+
 decide.o: decide.c
 	$(CC) -c decide.c
 
