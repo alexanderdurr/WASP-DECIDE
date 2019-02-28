@@ -125,6 +125,33 @@ int main(void){
 
     DECIDE();
 
-    printf("test");
+    printf("--- CMV ---\n");
+     for (i=0; i<numberLICs; i++) 
+	{
+		printf("%i", CMV[i]);
+        printf("\n");
+	}
+
+    printf("--- PUM ---\n");
+     for (i=0; i<numberLICs; i++) 
+	{
+		for (j=0; j<numberLICs; j++) 
+		{
+			printf("%i", PUM[i][j]);
+		}
+        printf("\n");
+	}
+
+    printf("--- FUV ---\n");
+     for (i=0; i<numberLICs; i++) 
+	{
+		printf("%i", FUV[i]);
+        printf("\n");
+	}
+
+    printf("--- LAUNCH ---\n");
+	printf("%i", LAUNCH);
+    printf("\n");
+    
     return 0;
 }
