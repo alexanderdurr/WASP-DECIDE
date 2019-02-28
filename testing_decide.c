@@ -100,6 +100,101 @@ int main(void){
     {
         printf("Test 2: failed\n");
     }
-        
+
+    PARAMETERS.LENGTH1=1;   // Length in LICs 0, 7, 12 // DOESNT LAUNCH WHEN 2, LAUNCHES WHEN 1 <-----------------------------------EXPERIMENT HERE-----------------------------------
+    PARAMETERS.RADIUS1=1;   // Radius in LICs 1, 8, 13
+    PARAMETERS.EPSILON=1;   // Deviation from PI in LICs 2, 9
+    PARAMETERS.AREA1=1;     // Area in LICs 3, 10, 14 // DOESNT LAUNCH WHEN 1, LAUNCHES WHEN 0.1 <------------------------------------EXPERIMENT HERE-----------------------------------
+    PARAMETERS.Q_PTS=1;        // No. of consecutive points in LIC 4
+    PARAMETERS.QUADS=1;        // No. of quadrants in LIC 4
+    PARAMETERS.DIST=1;      // Distance in LIC 6 
+    PARAMETERS.N_PTS=1;        // No. of consecutive pts. in LIC 6
+    PARAMETERS.K_PTS=1;        // No. of int. pts. in LICs 7, 12
+    PARAMETERS.A_PTS=1;        // No. of int. pts. in LICs 8, 13
+    PARAMETERS.B_PTS=1;        // No. of int. pts. in LICs 8, 13
+    PARAMETERS.C_PTS=1;        // No. of int. pts. in LIC 9
+    PARAMETERS.D_PTS=1;        // No. of int. pts. in LIC 9
+    PARAMETERS.E_PTS=1;        // No. of int. pts. in LICs 10, 14
+    PARAMETERS.F_PTS=1;        // No. of int. pts. in LICs 10, 14
+    PARAMETERS.G_PTS=1;        // No. of int. pts. in LIC 11
+    PARAMETERS.LENGTH2=1;   // Maximum length in LIC 12
+    PARAMETERS.RADIUS2=1;   // Maximum radius in LIC 13
+    PARAMETERS.AREA2=1;     // Maximum area in LIC 14
+
+    //LIC_1
+    printf("--- LIC_1 ---\n");
+    // Test Case 1
+    // Points in a line
+    X[0]=0;
+    X[1]=1;
+    X[2]=2;
+    X[3]=3;
+    X[4]=4;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=0;
+    Y[3]=0;
+    Y[4]=0;
+    POINTS.Y = Y;
+    PARAMETERS.RADIUS1=1; // Points must be in circle with radius 1
+    temp = LIC_1();
+    oracle = 0; // false, because the first and last point in the set of three are 2 apart = diameter
+    if(temp==oracle)
+    {
+        printf("Test 1: passed\n");
+    }
+    else
+    {
+        printf("Test 1: failed\n");
+    }
+    // Test Case 2
+    // Points in a line
+    X[0]=0;
+    X[1]=1;
+    X[2]=2;
+    X[3]=3;
+    X[4]=4;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=0;
+    Y[3]=0;
+    Y[4]=0;
+    POINTS.Y = Y;
+    PARAMETERS.RADIUS1=0.5; // Points must be in circle with radius 0.5
+    temp = LIC_1();
+    oracle = 1;  // true, because the first and last point in the set of three are 2 apart, which is bigger than the diameter
+    if(temp==oracle)
+    {
+        printf("Test 2: passed\n");
+    }
+    else
+    {
+        printf("Test 2: failed\n");
+    }
+
+    PARAMETERS.LENGTH1=1;   // Length in LICs 0, 7, 12 // DOESNT LAUNCH WHEN 2, LAUNCHES WHEN 1 <-----------------------------------EXPERIMENT HERE-----------------------------------
+    PARAMETERS.RADIUS1=1;   // Radius in LICs 1, 8, 13
+    PARAMETERS.EPSILON=1;   // Deviation from PI in LICs 2, 9
+    PARAMETERS.AREA1=1;     // Area in LICs 3, 10, 14 // DOESNT LAUNCH WHEN 1, LAUNCHES WHEN 0.1 <------------------------------------EXPERIMENT HERE-----------------------------------
+    PARAMETERS.Q_PTS=1;        // No. of consecutive points in LIC 4
+    PARAMETERS.QUADS=1;        // No. of quadrants in LIC 4
+    PARAMETERS.DIST=1;      // Distance in LIC 6 
+    PARAMETERS.N_PTS=1;        // No. of consecutive pts. in LIC 6
+    PARAMETERS.K_PTS=1;        // No. of int. pts. in LICs 7, 12
+    PARAMETERS.A_PTS=1;        // No. of int. pts. in LICs 8, 13
+    PARAMETERS.B_PTS=1;        // No. of int. pts. in LICs 8, 13
+    PARAMETERS.C_PTS=1;        // No. of int. pts. in LIC 9
+    PARAMETERS.D_PTS=1;        // No. of int. pts. in LIC 9
+    PARAMETERS.E_PTS=1;        // No. of int. pts. in LICs 10, 14
+    PARAMETERS.F_PTS=1;        // No. of int. pts. in LICs 10, 14
+    PARAMETERS.G_PTS=1;        // No. of int. pts. in LIC 11
+    PARAMETERS.LENGTH2=1;   // Maximum length in LIC 12
+    PARAMETERS.RADIUS2=1;   // Maximum radius in LIC 13
+    PARAMETERS.AREA2=1;     // Maximum area in LIC 14
+
+    
+
     return 0;
 }
