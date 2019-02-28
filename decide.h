@@ -48,6 +48,7 @@ BMATRIX PUM;
 VECTOR PUV;
 VECTOR FUV;
 boolean LAUNCH;
+boolean example1_marker=0;
 
 // compares floating point numbers -- see Nonfunctional Requirements
 static inline
