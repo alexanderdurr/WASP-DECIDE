@@ -120,6 +120,9 @@ int main(void){
     aPUV[14]=0;
     PUV = aPUV;
 
+    boolean aFUV[numberLICs];
+    FUV = aFUV;
+
     DECIDE();
 
     printf("test");
