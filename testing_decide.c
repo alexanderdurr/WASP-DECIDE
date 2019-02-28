@@ -341,7 +341,7 @@ int main(void){
     // Test Case 2
     X[0]=0;
     X[1]=1;
-    X[2]=0;
+    X[2]=0; // one step back
     X[3]=0;
     X[4]=0;
     POINTS.X = X;
@@ -353,6 +353,59 @@ int main(void){
     POINTS.Y = Y;
     temp = LIC_5();
     oracle = 1;  // true, because X[j] - X[j-1] < 0
+    if(temp==oracle)
+    {
+        printf("Test 2: passed\n");
+    }
+    else
+    {
+        printf("Test 2: failed\n");
+    }
+
+    //LIC_6
+    printf("--- LIC_6 ---\n");
+    // Test Case 1
+    X[0]=0;
+    X[1]=1;
+    X[2]=2;
+    X[3]=3;
+    X[4]=4;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=0;
+    Y[3]=0;
+    Y[4]=0;
+    POINTS.Y = Y;
+    PARAMETERS.DIST=1;
+    PARAMETERS.N_PTS=3; 
+    temp = LIC_6();
+    oracle = 0; // false, all points have a distance of 1 to the first and the last point in the set
+    if(temp==oracle)
+    {
+        printf("Test 1: passed\n");
+    }
+    else
+    {
+        printf("Test 1: failed\n");
+    }
+    // Test Case 2
+    X[0]=0;
+    X[1]=1;
+    X[2]=2;
+    X[3]=3;
+    X[4]=4;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=10; // distance to first an last point of set is larger than 1
+    Y[2]=0;
+    Y[3]=0;
+    Y[4]=0;
+    POINTS.Y = Y;
+    PARAMETERS.DIST=1;
+    PARAMETERS.N_PTS=3; 
+    temp = LIC_6();
+    oracle = 1;  // true, because POINT(1)-POINT(0) > 1
     if(temp==oracle)
     {
         printf("Test 2: passed\n");
