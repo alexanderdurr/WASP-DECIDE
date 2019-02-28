@@ -468,6 +468,61 @@ int main(void){
         printf("Test 2: failed\n");
     }
 
+     //LIC_8
+    printf("--- LIC_8 ---\n");
+    // Test Case 1
+    X[0]=0;
+    X[1]=1;
+    X[2]=2;
+    X[3]=3;
+    X[4]=4;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=0;
+    Y[3]=0;
+    Y[4]=0;
+    POINTS.Y = Y;
+    PARAMETERS.RADIUS1=2;
+    PARAMETERS.A_PTS=1;   
+    PARAMETERS.B_PTS=1;
+    temp = LIC_8();
+    oracle = 0; // false, because the first and last point are 4 apart, which is the diameter of a circle with radius1=2
+    if(temp==oracle)
+    {
+        printf("Test 1: passed\n");
+    }
+    else
+    {
+        printf("Test 1: failed\n");
+    }
+    // Test Case 2
+    X[0]=0;
+    X[1]=1;
+    X[2]=2;
+    X[3]=3;
+    X[4]=4;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=0;
+    Y[3]=0;
+    Y[4]=0;
+    POINTS.Y = Y;
+    PARAMETERS.RADIUS1=1;
+    PARAMETERS.A_PTS=1;   
+    PARAMETERS.B_PTS=1;
+    temp = LIC_8();
+    oracle = 1;  // true, because first and last point are 4 apart which is greater than diameter of a circle of radius1 =1 
+    if(temp==oracle)
+    {
+        printf("Test 2: passed\n");
+    }
+    else
+    {
+        printf("Test 2: failed\n");
+    }
+
 
 
 
