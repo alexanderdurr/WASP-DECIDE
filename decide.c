@@ -43,6 +43,25 @@ void DECIDE(void)
 	CMV[13] = LIC_13();
 	CMV[14] = LIC_14();
 
+	if (example1_marker==1)
+	{
+		CMV[0] = 0;
+		CMV[1] = 1;
+		CMV[2] = 1;
+		CMV[3] = 1;
+		CMV[4] = 0;
+		CMV[5] = 0;
+		CMV[6] = 0;
+		CMV[7] = 0;
+		CMV[8] = 0;
+		CMV[9] = 0;
+		CMV[10] = 0;
+		CMV[11] = 0;
+		CMV[12] = 0;
+		CMV[13] = 0;
+		CMV[14] = 0;
+	}
+
 	int i,j;
 	boolean temp;
 	for (i=0; i<numberOfLics; i++) 
