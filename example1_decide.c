@@ -125,6 +125,7 @@ int main(void){
     boolean aFUV[numberLICs];
     FUV = aFUV;
 
+    example1_marker =1;
     DECIDE();
 
     printf("--- CMV ---\n");
