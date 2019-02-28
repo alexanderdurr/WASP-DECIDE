@@ -260,7 +260,58 @@ int main(void){
         printf("Test 2: failed\n");
     }
 
-
+    //LIC_4
+    printf("--- LIC_4 ---\n");
+    // Test Case 1
+    X[0]=0;
+    X[1]=1;
+    X[2]=2;
+    X[3]=3;
+    X[4]=4;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=0;
+    Y[3]=0;
+    Y[4]=0;
+    POINTS.Y = Y;
+    PARAMETERS.Q_PTS=2;
+    PARAMETERS.QUADS=1; 
+    temp = LIC_4();
+    oracle = 0; // false, because all are in quadrant I
+    if(temp==oracle)
+    {
+        printf("Test 1: passed\n");
+    }
+    else
+    {
+        printf("Test 1: failed\n");
+    }
+    // Test Case 2
+    X[0]=0; // quadrant 1
+    X[1]=-1; // quadrant 2
+    X[2]=0; // quadrant 3
+    X[3]=0;
+    X[4]=0;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=-1;
+    Y[3]=0;
+    Y[4]=0;
+    POINTS.Y = Y;
+    PARAMETERS.Q_PTS=2;
+    PARAMETERS.QUADS=1; 
+    temp = LIC_4();
+    oracle = 1;  // true, because 2 consecutive points lie in more than 1 quadrant
+    if(temp==oracle)
+    {
+        printf("Test 2: passed\n");
+    }
+    else
+    {
+        printf("Test 2: failed\n");
+    }
 
 
     PARAMETERS.LENGTH1=1;   // Length in LICs 0, 7, 12 // DOESNT LAUNCH WHEN 2, LAUNCHES WHEN 1 <-----------------------------------EXPERIMENT HERE-----------------------------------
