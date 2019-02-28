@@ -101,6 +101,25 @@ int main(void){
     PUM = (boolean **) aux2;
     for(i=0;i<numberLICs;i++) aux2[i] = (boolean *) aPUM + i*numberLICs;
 
+    boolean aPUV[numberLICs];
+    aPUV[0]=1;
+    aPUV[1]=0;
+    aPUV[2]=1;
+    aPUV[2]=0;
+    aPUV[3]=0;
+    aPUV[4]=0;
+    aPUV[5]=0;
+    aPUV[6]=0;
+    aPUV[7]=0;
+    aPUV[8]=0;
+    aPUV[9]=0;
+    aPUV[10]=0;
+    aPUV[11]=0;
+    aPUV[12]=0;
+    aPUV[13]=0;
+    aPUV[14]=0;
+    PUV = aPUV;
+
     DECIDE();
 
     printf("test");
