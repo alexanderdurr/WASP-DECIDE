@@ -743,6 +743,63 @@ int main(void){
         printf("Test 2: failed\n");
     }
 
+    //LIC_13
+    printf("--- LIC_13 ---\n");
+    // Test Case 1
+    X[0]=0;
+    X[1]=1;
+    X[2]=2;
+    X[3]=3;
+    X[4]=4;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=0;
+    Y[3]=0;
+    Y[4]=0;
+    POINTS.Y = Y;
+    PARAMETERS.RADIUS1=2;
+    PARAMETERS.RADIUS2=1; 
+    PARAMETERS.A_PTS=1;   
+    PARAMETERS.B_PTS=1;
+    temp = LIC_13();
+    oracle = 0; // false, because the first and last point are 4 apart, which is the diameter of a circle with radius1=2, the second condition for Radius2 is true, but both must be true
+    if(temp==oracle)
+    {
+        printf("Test 1: passed\n");
+    }
+    else
+    {
+        printf("Test 1: failed\n");
+    }
+    // Test Case 2
+    X[0]=0;
+    X[1]=1;
+    X[2]=2;
+    X[3]=3;
+    X[4]=4;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=0;
+    Y[3]=0;
+    Y[4]=0;
+    POINTS.Y = Y;
+    PARAMETERS.RADIUS1=1;
+    PARAMETERS.RADIUS2=10; 
+    PARAMETERS.A_PTS=1;   
+    PARAMETERS.B_PTS=1;
+    temp = LIC_13();
+    oracle = 1;  // true, because first and last point are 4 apart which is greater than diameter of a circle of radius1 =1 and the second condition is fulfilled since they are also contained in a circle of radius2=10
+    if(temp==oracle)
+    {
+        printf("Test 2: passed\n");
+    }
+    else
+    {
+        printf("Test 2: failed\n");
+    }
+
 
     PARAMETERS.LENGTH1=1;   // Length in LICs 0, 7, 12 // DOESNT LAUNCH WHEN 2, LAUNCHES WHEN 1 <-----------------------------------EXPERIMENT HERE-----------------------------------
     PARAMETERS.RADIUS1=1;   // Radius in LICs 1, 8, 13
