@@ -688,6 +688,61 @@ int main(void){
         printf("Test 2: failed\n");
     }
 
+    //LIC_12
+    printf("--- LIC_12 ---\n");
+    // Test Case 1
+    X[0]=0;
+    X[1]=1;
+    X[2]=2;
+    X[3]=3;
+    X[4]=4;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=0;
+    Y[3]=0;
+    Y[4]=0;
+    POINTS.Y = Y;
+    PARAMETERS.LENGTH1=2;
+    PARAMETERS.LENGTH2=10;
+     PARAMETERS.K_PTS=1;
+    temp = LIC_12();
+    oracle = 0; // false, because in a set of three the first and last point on this line are 2 apart (false for length1), but also they are smaller thatn length2
+    if(temp==oracle)
+    {
+        printf("Test 1: passed\n");
+    }
+    else
+    {
+        printf("Test 1: failed\n");
+    }
+    // Test Case 2
+    X[0]=0;
+    X[1]=1;
+    X[2]=2;
+    X[3]=2.1;
+    X[4]=2.2;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=0;
+    Y[3]=0;
+    Y[4]=0;
+    POINTS.Y = Y;
+    PARAMETERS.LENGTH1=1;
+    PARAMETERS.LENGTH2=0.5;
+     PARAMETERS.K_PTS=1;
+    temp = LIC_12();
+    oracle = 1;  // true, because the first and last point in a set of three (POINT(0), POINT(3)) are 2 apart > LENGTH1 and the first and the last in a set of three are 0.2 apart < LENGTH2
+    if(temp==oracle)
+    {
+        printf("Test 2: passed\n");
+    }
+    else
+    {
+        printf("Test 2: failed\n");
+    }
+
 
     PARAMETERS.LENGTH1=1;   // Length in LICs 0, 7, 12 // DOESNT LAUNCH WHEN 2, LAUNCHES WHEN 1 <-----------------------------------EXPERIMENT HERE-----------------------------------
     PARAMETERS.RADIUS1=1;   // Radius in LICs 1, 8, 13
