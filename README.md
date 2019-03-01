@@ -32,7 +32,7 @@ Checks:
 * [x] Insturctions on compiling and executing the code with simple example
 
 Pass with distinction:
-* [ ] Commits clearly identified as feature, fix, documentantion, etc.
+* [x] Commits clearly identified as feature, fix, documentantion, etc.
 * [x] Documentation specifying: commit conventions and branch conventions
 
 ### Refactoring
@@ -49,18 +49,18 @@ Pass:
 ### Testing
 
 Pass:
-* [ ] One test case for each function of the code (intention, test inputs and oracle for function)
-* [ ] Document intention of each use
-* [ ] Document rational of test oracles
-* [ ] Automate test execution (setup existing framework or custom scripts)
+* [x] One test case for each function of the code (intention, test inputs and oracle for function)
+* [x] Document intention of each use
+* [x] Document rational of test oracles
+* [x] Automate test execution (setup existing framework or custom scripts)
 
 Checks:
-* [ ] At least one corresponding test case per function
-* [ ] Test inputs and oracles correspond to intention
-* [ ] Test automation scripts or framework
+* [x] At least one corresponding test case per function
+* [x] Test inputs and oracles correspond to intention
+* [x] Test automation scripts or framework
 
 Pass with distinction:
-* [ ] Multiple test cases for each function for various usage cenarios (nominal/exceptional cases)
+* [x] Multiple test cases for each function for various usage cenarios (nominal/exceptional cases)
 * [ ] Report of relevance of test cases (appropriate for basic requriements or different execution scenario)
 
 ## Used Commit & Branch Conventions
@@ -92,7 +92,7 @@ The naming of a branch follows
 - Grouping tokens: develop, feature, release branch, hotfixes, master
 - Lead token: < feature name >, < bug name >, issue < name > < number > , ...
 
-## Code Description and Execution
+## Code Description, Execution, Examples and Testing
 
 ### Compiling
 
@@ -141,3 +141,16 @@ the Launch Interceptor Condition 3 is set to true, which ultimately results in a
 The difference of consecutive points (POINTS.X, POINTS.Y) is between 0 and sqrt(2). By changing to a value LENGTH1 over sqrt(2). This condition can be made false, resulting in no launch.
 
 Feel free to experiment!
+
+### Testing
+
+You can run the unit tests by typing
+
+```
+make testing_decide
+./testing_decide
+```
+
+The intention, the test inputs and the reational of the oracle for function are documented in the appropriate section of the code in testing_decide.c .
+
+The code in Example 1 (and interactive in Example 2) can be interpreted as a bigger test case since the result was analytically derived in decide.pdf .
