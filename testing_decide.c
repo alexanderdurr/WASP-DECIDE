@@ -20,6 +20,8 @@ boolean LIC_12();
 boolean LIC_13();
 boolean LIC_14();
 
+boolean Area(double X1, double X2, double X3, double Y1, double Y2, double Y3, double Area);
+
 int main(void){
 
     PARAMETERS.LENGTH1=1;   // Length in LICs 0, 7, 12 // DOESNT LAUNCH WHEN 2, LAUNCHES WHEN 1 <-----------------------------------EXPERIMENT HERE-----------------------------------
@@ -859,6 +861,60 @@ int main(void){
         printf("Test 2: failed\n");
     }
 
+     //Area
+    printf("--- Area ---\n");
+    // Test Case 1
+    // Points in a line
+    X[0]=0;
+    X[1]=1;
+    X[2]=2;
+    X[3]=3;
+    X[4]=4;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=0;
+    Y[3]=0;
+    Y[4]=0;
+    POINTS.Y = Y;
+    PARAMETERS.AREA1=1;
+    temp = Area( X[0],  X[2],  X[4],  Y[0],  Y[2],  Y[4],  PARAMETERS.AREA1);
+    oracle = 0; // false, because the area is zero
+    if(temp==oracle)
+    {
+        printf("Test 1: passed\n");
+    }
+    else
+    {
+        printf("Test 1: failed\n");
+    }
+    // Test Case 2
+    // Points in a 90 degree angle at the middle point
+    X[0]=0;
+    X[1]=1;
+    X[2]=2;
+    X[3]=1;
+    X[4]=1;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=0;
+    Y[3]=1;
+    Y[4]=2;
+    POINTS.Y = Y;
+    PARAMETERS.AREA1=1;
+    temp = Area( X[0],  X[2],  X[4],  Y[0],  Y[2],  Y[4],  PARAMETERS.AREA1);
+    oracle = 1;  // true, because the area of the triangle is 2 which is bigger than AREA1
+    if(temp==oracle)
+    {
+        printf("Test 2: passed\n");
+    }
+    else
+    {
+        printf("Test 2: failed\n");
+    }
+
+  
 
     PARAMETERS.LENGTH1=1;   // Length in LICs 0, 7, 12 // DOESNT LAUNCH WHEN 2, LAUNCHES WHEN 1 <-----------------------------------EXPERIMENT HERE-----------------------------------
     PARAMETERS.RADIUS1=1;   // Radius in LICs 1, 8, 13
