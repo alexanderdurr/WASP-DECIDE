@@ -966,6 +966,60 @@ int main(void){
         printf("Test 2: failed\n");
     }
 
+    //Angle
+    printf("--- Angle ---\n");
+    // Test Case 1
+    // Points in a line
+    X[0]=0;
+    X[1]=1;
+    X[2]=2;
+    X[3]=3;
+    X[4]=4;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=0;
+    Y[3]=0;
+    Y[4]=0;
+    POINTS.Y = Y;
+    PARAMETERS.EPSILON=1;
+    temp = Angle( X[0],  X[2],  X[4],  Y[0],  Y[2],  Y[4],  PARAMETERS.EPSILON);
+    oracle = 0; // false, because the angle is zero
+    if(temp==oracle)
+    {
+        printf("Test 1: passed\n");
+    }
+    else
+    {
+        printf("Test 1: failed\n");
+    }
+    // Test Case 2
+    // Points in a 90 degree angle at the middle point
+    X[0]=0;
+    X[1]=1;
+    X[2]=2;
+    X[3]=1;
+    X[4]=1;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=0;
+    Y[3]=1;
+    Y[4]=2;
+    POINTS.Y = Y;
+    PARAMETERS.EPSILON=1;
+    temp = Angle( X[0],  X[2],  X[4],  Y[0],  Y[2],  Y[4],  PARAMETERS.EPSILON);
+    oracle = 1;  // true, because the angle between first middle and last point is 90 degrees which is less than pi-1
+    if(temp==oracle)
+    {
+        printf("Test 2: passed\n");
+    }
+    else
+    {
+        printf("Test 2: failed\n");
+    }
+
+
     PARAMETERS.LENGTH1=1;   // Length in LICs 0, 7, 12 // DOESNT LAUNCH WHEN 2, LAUNCHES WHEN 1 <-----------------------------------EXPERIMENT HERE-----------------------------------
     PARAMETERS.RADIUS1=1;   // Radius in LICs 1, 8, 13
     PARAMETERS.EPSILON=1;   // Deviation from PI in LICs 2, 9
