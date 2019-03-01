@@ -152,3 +152,5 @@ make testing_decide
 ```
 
 The intention, the test inputs and the reational of the oracle for function are documented in the appropriate section of the code in testing_decide.c .
+
+The code in Example 1 (and interactive in Example 2) can be interpreted as a bigger test case since the result was analytically derived in decide.pdf .
