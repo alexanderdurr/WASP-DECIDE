@@ -1,13 +1,6 @@
 CC=gcc
 SRC=./src/
 
-hello: $(SRC)hello.o
-	$(CC) -o hello $(SRC)hello.o
-	make removeO
-
-$(SRC)hello.o: $(SRC)hello.c
-	$(CC) -c $(SRC)hello.c
-
 example1_decide: $(SRC)example1_decide.o $(SRC)decide.o
 	$(CC) -o example1_decide $(SRC)example1_decide.o $(SRC)decide.o -lm
 	make removeO
