@@ -23,6 +23,7 @@ boolean LIC_14();
 boolean Area(double X1, double X2, double X3, double Y1, double Y2, double Y3, double Area);
 boolean Circle(double X1, double X2, double X3, double Y1, double Y2, double Y3, double Radius);
 boolean Angle(double X1, double X2, double X3, double Y1, double Y2, double Y3, double Epsilon);
+double euclideanDistance(double deltaX, double deltaY);
 
 int main(void){
 
@@ -1011,6 +1012,57 @@ int main(void){
     PARAMETERS.EPSILON=1;
     temp = Angle( X[0],  X[2],  X[4],  Y[0],  Y[2],  Y[4],  PARAMETERS.EPSILON);
     oracle = 1;  // true, because the angle between first middle and last point is 90 degrees which is less than pi-1
+    if(temp==oracle)
+    {
+        printf("Test 2: passed\n");
+    }
+    else
+    {
+        printf("Test 2: failed\n");
+    }
+
+     //euclideanDistance
+    printf("--- euclideanDistance ---\n");
+    // Test Case 1
+    // Distance between every consecutive pair is equal to 1
+    X[0]=0;
+    X[1]=1;
+    X[2]=2;
+    X[3]=3;
+    X[4]=4;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=0;
+    Y[3]=0;
+    Y[4]=0;
+    POINTS.Y = Y;
+    temp = euclideanDistance(X[1]-X[0],Y[1]-Y[0]);
+    oracle = 1; //distance = 1
+    if(temp==oracle)
+    {
+        printf("Test 1: passed\n");
+    }
+    else
+    {
+        printf("Test 1: failed\n");
+    }
+    // Test Case 2
+    // Distance between every consecutive pair is equal to 1
+    X[0]=0;
+    X[1]=1;
+    X[2]=2;
+    X[3]=3;
+    X[4]=4;
+    POINTS.X = X;
+    Y[0]=0;
+    Y[1]=0;
+    Y[2]=0;
+    Y[3]=0;
+    Y[4]=0;
+    POINTS.Y = Y;
+    temp = euclideanDistance(X[2]-X[0],Y[2]-Y[0]);
+    oracle = 2; //2, because distance =2
     if(temp==oracle)
     {
         printf("Test 2: passed\n");
