@@ -42,8 +42,9 @@ Pass:
 * [x] Each refactoring as a single commit
 * [x] Reach at least 16 points
 (rename method/variable/field, encapsule field, move method/field, extract magic constant, inline method)
-* [ ] At least 2 complex refactorings
-(replace conditional with polymorphism, replace inheritance with delegation, extract class/method, extract interface, pull up method)
+* [x] At least 2 complex refactorings (replace conditional with polymorphism, replace inheritance with delegation, extract class/method, extract interface, pull up method)
+     - Extract Method/Function (in one method)
+         - Replace it in all other methods
 * [x] Use name scheme of the refactoring cataloques
 * [ ] Submit list of commit identifiers for the refactoring commits
 
