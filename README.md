@@ -108,6 +108,8 @@ NUMPOINTS, POINTS, PARAMETERS, LCM, PUV
 Outputs:
 LAUNCH, CMV, PUM, FUV
 
+(Have a look at src/example1_decide to set up your own problem.)
+
 ### Compiling
 
 You can compile decide.c with
