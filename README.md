@@ -15,7 +15,8 @@ The DECIDE system is implemented according to this specification: http://www.mon
 - Refactoring:
 @llbit
 
-* [ ] Give the TAs access to the repository
+* [x] Give the TAs access to the  repository
+-> public repo
 
 ### Versioning
 
@@ -50,8 +51,8 @@ Pass:
 
 Pass:
 * [x] One test case for each function of the code (intention, test inputs and oracle for function)
-* [x] Document intention of each use
-* [x] Document rational of test oracles
+* [x] Document intention of each use (comments)
+* [x] Document rational of test oracles (comments)
 * [x] Automate test execution (setup existing framework or custom scripts)
 
 Checks:
@@ -60,8 +61,8 @@ Checks:
 * [x] Test automation scripts or framework
 
 Pass with distinction:
-* [x] Multiple test cases for each function for various usage cenarios (nominal/exceptional cases)
-* [ ] Report of relevance of test cases (appropriate for basic requriements or different execution scenario)
+* [x] Multiple test cases for each function for various usage scenarios (nominal/exceptional cases)
+* [X] Report of relevance of test cases (appropriate for basic requriements or different execution scenario)
 
 ## Used Commit & Branch Conventions
 
@@ -94,9 +95,11 @@ The naming of a branch follows
 
 ## Code Description, Execution, Examples and Testing
 
-### Compiling
 
-The calculations are described in decide.pdf and you can look into the original document the task is based on by looking at nver-tse.pdf .
+
+The calculations are described in doc/decide.pdf and you can look into the original document the task is based on by looking in doc/nver-tse.pdf .
+
+### Compiling
 
 You can compile decide.c with
 
@@ -106,7 +109,7 @@ make decide.o
 
 ### Example 1
 
-You can execute the example by compiling everything first
+You can execute the example by typing first
 
 ```
 make example1_decide
@@ -130,7 +133,7 @@ make example2_decide
 ./example2_decide
 ```
 
-By changing from 1 (in example1_decide.c) to 0.1 (in example2_decide)
+By changing a parameter from 1 (in example1_decide.c) to 0.1 (in example2_decide)
 
 ```
 PARAMETERS.AREA1=0.1;
@@ -138,9 +141,8 @@ PARAMETERS.AREA1=0.1;
 
 the Launch Interceptor Condition 3 is set to true, which ultimately results in a launch.
 
-The difference of consecutive points (POINTS.X, POINTS.Y) is between 0 and sqrt(2). By changing to a value LENGTH1 over sqrt(2). This condition can be made false, resulting in no launch.
-
-Feel free to experiment!
+The difference of consecutive points (POINTS.X, POINTS.Y) is between 0 and sqrt(2). By changing to a value LENGTH1 over sqrt(2). This Launch Interceptor Condition 1 (LIC_1) can be made false, resulting in an abort of launch.
+-> Try it! Feel free to experiment!
 
 ### Testing
 
@@ -151,6 +153,7 @@ make testing_decide
 ./testing_decide
 ```
 
-The intention, the test inputs and the reational of the oracle for function are documented in the appropriate section of the code in testing_decide.c .
+The intention, the test inputs and the reational of the oracle for function are documented in the appropriate section of the code as comments in testing_decide.c .
+The unit tests are nominal cases and cover basic requirements.
 
-The code in Example 1 (and interactive in Example 2) can be interpreted as a bigger test case since the result was analytically derived in decide.pdf .
+The code in Example 1 (and interactive in Example 2) can be interpreted as middle to big test case since the result was analytically derived in decide.pdf . Those can be seen as specific execution scenarios depending on the chosen input PARAMETERS.
