@@ -22,6 +22,7 @@ boolean LIC_14();
 
 boolean Area(double X1, double X2, double X3, double Y1, double Y2, double Y3, double Area);
 boolean Circle(double X1, double X2, double X3, double Y1, double Y2, double Y3, double Radius);
+boolean Angle(double X1, double X2, double X3, double Y1, double Y2, double Y3, double Epsilon);
 
 int main(void){
 
