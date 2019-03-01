@@ -11,7 +11,7 @@ The DECIDE system is implemented according to this specification: http://www.mon
 ### Assigned TA's GitHub
 
 - Versioning & Testing:
-@gluckyhang
+@gluckzhang
 - Refactoring:
 @llbit
 
