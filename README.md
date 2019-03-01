@@ -96,9 +96,17 @@ The naming of a branch follows
 
 ## Code Description, Execution, Examples and Testing
 
+### Code Description
 
+The calculations are described in doc/decide.pdf and you can look into the original document the task is based on by looking in doc/nver-tse.pdf . The Launch Interceptor Conditions (LIC) are in decide.c and their results are used as entries of the Conditions Met Vector (CMV). The Logical Connector Matrix (LCM) and the CMV are used to calculate the Preliminary Unlocking Matrix (PUM).  With the Preliminary Unlocking Vector (PUV) one can deactivate specific LCUs. The Final Unlocking Vector (FUV) is calculated by looking at the PUV and then at the PUM. If all entries of the FUV are true, the missile can be launched.
 
-The calculations are described in doc/decide.pdf and you can look into the original document the task is based on by looking in doc/nver-tse.pdf .
+Inputs and Outputs are defined as in doc/decide.pdf on page 2 described.
+
+Inputs: 
+NUMPOINTS, POINTS, PARAMETERS, LCM, PUV
+
+Outputs:
+LAUNCH, CMV, PUM, FUV
 
 ### Compiling
 
