@@ -24,8 +24,8 @@ Pass:
 * [x] Setup own repository
 * [x] Maintain a streak of 10+ high-quality commits
 * [x] Write a high quality README
-* [ ] Perform a release
-* [ ] Upload a link to the code repository to Canvas
+* [x] Perform a release
+* [x] Upload a link to the code repository to Canvas
 
 Checks:
 * [x] Structured repository, appropriate folders
@@ -46,7 +46,7 @@ Pass:
      - Extract Method/Function (in one method)
          - Replace it in all other methods
 * [x] Use name scheme of the refactoring cataloques
-* [ ] Submit list of commit identifiers for the refactoring commits
+* [x] Submit list of commit identifiers for the refactoring commits
 
 ### Testing
 
